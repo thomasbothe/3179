@@ -1,0 +1,34 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "background": "transparent",
+  "data": {
+      "url": "Life_Expectancy.csv"
+  },
+  "title": "Life Expectancy Over Time",
+  "mark": "rect",
+  "encoding": {
+      "x": {
+          "field": "TIME_PERIOD",
+          "type": "ordinal",
+          "title": "Year"
+      },
+      "y": {
+          "field": "Reference area",
+          "type": "nominal",
+          "title": "Country"
+      },
+      "color": {
+          "field": "OBS_VALUE",
+          "aggregate": "max",
+          "type": "quantitative",
+          "legend": {
+              "title": "Life Expectancy (years)"
+          }
+      },
+        "tooltip": [
+            {"field": "Reference area", "type": "nominal", "title": "Country"},
+            {"field": "OBS_VALUE", "type": "quantitative", "title": "Life Expectancy (years)"},
+            {"field": "TIME_PERIOD", "type": "quantitative", "title": "Year"}
+    ]
+  }
+}
