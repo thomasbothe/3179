@@ -1,16 +1,103 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>My first HTML document</title>
-    </head>
-    <body>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <h1> 1. Introduction to HTML </h1>
-        <h2> 1.1 Creating paragraphs </h2>
-        <p>Unit: FIT3179 Data Visualisation</p>
-        <p>This is a paragraph about paragraphs</p>
+    <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
 
-        <h2>1.2 Creating tables</h2>
-        <h3>1.2.1 Table Rows</h3>
-    </body>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.1.0/build/pure-min.css" integrity="sha384-kj0X2NG2KHBie8Tq8fH1kxnyWM9XsXQpq7XdwbKmFKjwwaXGKBlB2Klu3VOltSFx" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.1.0/build/grids-responsive-min.css" />
+    
+    <title>FIT3179 Assignment 2 </title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="page-container">
+
+        <header class="pure-g page-header">
+            <div class="pure-u-1">
+                <h1>How do Health Outcomes Differ Around the World?</h1>
+                <p class="introduction">
+                    Healthcare systems and life expectancy vary widely around the world. 
+                    But how do differences in resources and behaviour
+                    shape people's health outcomes, 
+                    and what role do they play in helping people live longer, healthier lives?
+                </p>
+            </div>
+        </header>
+
+        <div class="pure-g">
+            <section class="pure-u-1 chart-section">
+                <h2>Healthcare Expenditure</h2>
+                <p class="chart-description">
+                    Countries commit vastly different amounts to healthcare. <br>
+                    But does spending more translate into better health outcomes?
+                    
+                </p>
+                <div id="expenditure_chart"></div>
+            </section>
+        </div>
+
+        <div class="pure-g">
+            <section class="pure-u-1-2 chart-section">
+                <h2>Alcohol Consumption</h2>
+                <p class="chart-description">
+                   Alcohol consumption varies widely across countries,
+                    shaped by cultural norms, values, and lifestyles.
+                </p>
+                <div id="alcohol_chart"></div>
+            </section>
+
+            <section class="pure-u-1-2 chart-section">
+                <h2>Life Expectancy</h2>
+                <p class="chart-description">
+                    Life expectancy offers a broader picture of population health, 
+                    reflecting differences in living conditions, healthcare systems and access to treatment. 
+                    Comparing countries reveals striking differences in how long people live.
+                </p>
+                <div id="life_expectancy_chart"></div>
+            </section>
+        </div>
+
+        <div class="pure-g">
+            <section class="pure-u-1-2 chart-section">
+                <h2>Hospitals</h2>
+                <p class="chart-description">
+                    Access to hospitals can have a drastic impact on the quality of healthcare people receive.
+                    In particular, people living in rural areas have significantly fewer resources available to them.
+                </p>
+                <div id="hospitals_chart"></div>
+            </section>
+
+            <section class="pure-u-1-2 chart-section">
+                <h2>Measles Vaccination</h2>
+                <p class="chart-description">
+                    Longer lives depend not only on treating illness, but also on preventing it. 
+                    Vaccination protects people from preventable diseases, but coverage varies between countries. 
+                    Do gaps in protection correlate with lower heatlh outcomes?
+                </p>
+                <div id="measles_chart"></div>
+            </section>
+        </div>
+    </div>
+
+    <script src="vega_lite_vis.js"></script>
+</body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
