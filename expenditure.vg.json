@@ -1,0 +1,42 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "background": "transparent",
+  "title": "Health Expenditure Over Time",
+  "width": 1200,
+  "data": {
+    "url": "GDP_over_time.csv"
+  },
+  "mark": {
+    "type": "line",
+    "point": true
+  },
+  "encoding": {
+    "x": {
+      "field": "TIME_PERIOD", "type": "ordinal", "title": "Year"},
+    "y": {"field": "OBS_VALUE", "type": "quantitative", "title": "Health Expenditure (% of GDP)"},
+    "color": {
+      "field": "Reference area",
+      "type": "nominal",
+      "title": "Country",
+      "scale": {
+        "domain": [
+          "Australia", "Canada", "France", "Germany", "Japan", 
+          "Mexico", "New Zealand", "Sweden", "United Kingdom", "United States"
+        ],
+        "range": [
+        "#FF0000", "#D3D3D3", "#D3D3D3", "#D3D3D3",
+        "#D3D3D3", "#D3D3D3", "#D3D3D3", "#D3D3D3",  
+        "#D3D3D3", "#D3D3D3"
+      ]
+      },
+      "legend": {
+        "values": ["Australia"]
+      }
+
+    },
+    "tooltip": [
+      {"field": "Reference area", "type": "nominal", "title": "Country"},
+      {"field": "OBS_VALUE", "type": "quantitative", "title": "Health Expenditure(% of GDP)"}
+    ]
+  }
+}
