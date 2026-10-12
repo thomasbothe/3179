@@ -1,17 +1,56 @@
-#l-align {
-    text-align: left;
-    border: 1px solid black;
-    /* to set the border*/
+body {
+    margin: 0;
+    background-color: #f5f7fa;
+    color: #263238;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.6;
 }
 
-#c-align {
+.page-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 30px 20px;
+}
+
+.page-header {
+    margin-bottom: 25px;
     text-align: center;
-    border: 1px solid black;
-    /* to set the border*/
 }
 
-#r-align {
-    text-align: right;
-    border: 1px solid black;
-    /* to set the border*/
+.page-header h1 {
+    margin-bottom: 12px;
+    color: #173b57;
+    font-size: 2.3em;
+    line-height: 1.2;
+}
+
+.introduction {
+    max-width: 850px;
+    margin: 0 auto;
+    color: #52616b;
+    font-size: 1.05em;
+}
+
+.chart-section {
+    box-sizing: border-box;
+    padding: 15px;
+}
+
+.chart-section h2 {
+    margin-top: 0;
+    margin-bottom: 8px;
+    color: #173b57;
+    font-size: 1.3em;
+    line-height: 1.35;
+}
+
+.chart-description {
+    margin-top: 0;
+    margin-bottom: 16px;
+    color: #52616b;
+    font-size: 0.95em;
+}
+
+.chart-section > div[id$="_chart"] {
+    width: 100%;
 }
