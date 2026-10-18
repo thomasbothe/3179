@@ -1,6 +1,6 @@
 body {
     margin: 0;
-    background-color: #f5f7fa;
+    background-color: white;
     color: #263238;
     font-family: Arial, Helvetica, sans-serif;
     line-height: 1.6;
@@ -14,22 +14,23 @@ body {
 
 .page-header {
     margin-bottom: 25px;
-    text-align: center;
+    padding: 0 15px;
+    text-align: left;
 }
 
 .page-header h1 {
     margin-bottom: 12px;
     color: #173b57;
-    font-size: 2.3em;
+    font-size: 50px;
     font-family: "Quicksand", sans-serif;
     line-height: 1.2;
 }
 
 .introduction {
-    max-width: 850px;
-    margin: 0 auto;
+    max-width: 760px;
+    margin: 0;
     color: #52616b;
-    font-size: 1.05em;
+    font-size: 17px;
 }
 
 .chart-section {
@@ -41,7 +42,7 @@ body {
     margin-top: 0;
     margin-bottom: 8px;
     color: #173b57;
-    font-size: 1.3em;
+    font-size: 25px;
     font-family: "Quicksand", sans-serif;
     line-height: 1.35;
 }
@@ -50,9 +51,145 @@ body {
     margin-top: 0;
     margin-bottom: 16px;
     color: #52616b;
-    font-size: 0.95em;
+    font-size: 16px;
 }
 
 .chart-section > div[id$="_chart"] {
     width: 100%;
 }
+
+/* Scroll to sections when using buttons */
+html { scroll-behavior: smooth; }
+
+.top-nav {
+    box-sizing: border-box;
+    /* Keep nav bar visible */
+    position: sticky;
+    top: 0;
+    /* Keep nav bar positioned over charts */
+    z-index: 10;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 6px 25px;
+    padding: 10px 160px;
+    background: #173b57;
+}
+.top-nav a {
+    color: white;
+    text-decoration: none;
+    font-family: "Quicksand", sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+}
+.top-nav a:hover { 
+    text-decoration: underline; 
+}
+
+.byline { 
+    color: #52616b; 
+    font-size: 16px; 
+    margin-top: 10px; 
+}
+
+/* headline numbers */
+.stat-row { margin: 10px 0 40px; padding: 0 15px; }
+.stat {
+    box-sizing: border-box;
+    padding: 10px 20px 10px 14px;
+    border-left: 4px solid #e41a1c;
+    color: #52616b;
+    font-size: 16px;
+}
+.stat-number {
+    display: block;
+    color: #173b57;
+    font-family: "Quicksand", sans-serif;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 1.1;
+}
+
+/* part headings */
+.part-intro {
+    margin-top: 50px;
+    padding: 0 15px;
+    max-width: 760px;
+}
+.part-label {
+    margin: 0 0 4px;
+    color: #e41a1c;
+    font-family: "Quicksand", sans-serif;
+    font-weight: 700;
+}
+.part-intro h2 {
+    margin: 0 0 8px;
+    color: #173b57;
+    font-family: "Quicksand", sans-serif;
+    font-size: 32px;
+    line-height: 1.2;
+}
+.part-intro p { 
+    color: #52616b; 
+}
+
+.chart-section h3 {
+    margin: 0 0 8px;
+    color: #173b57;
+    font-family: "Quicksand", sans-serif;
+    font-size: 20px;
+    line-height: 1.3;
+}
+
+
+/* the one-line bridge between parts */
+.takeaway {
+    margin: 20px 15px 0;
+    padding: 12px 0;
+    border-top: 1px solid #cfd8dc;
+    border-bottom: 1px solid #cfd8dc;
+    max-width: 760px;
+}
+.takeaway p {
+    margin: 0;
+    color: #173b57;
+    font-family: "Quicksand", sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.conclusion { 
+    margin: 20px 15px 0; 
+    padding: 20px 25px; 
+    background: white; 
+    border-left: 4px solid #173b57; 
+    max-width: 760px; 
+}
+.conclusion h3 { 
+    margin-top: 0; 
+    color: #173b57; 
+    font-family: "Quicksand", sans-serif; 
+}
+
+/* sources and glossary */
+.sources { 
+    margin-top: 60px; 
+    padding: 25px 15px 0; 
+    border-top: 2px solid #173b57; 
+    font-size: 16px; color: #52616b; 
+}
+.sources h3 { 
+    color: #173b57; 
+    font-family: 
+    "Quicksand", sans-serif; 
+}
+.sources dt { 
+    font-weight: 700; 
+    margin-top: 8px; 
+}
+.sources dd { 
+    margin: 0; 
+}
+
+/* keep wide Vega charts inside their column */
+.vega-embed { max-width: 100%; }
