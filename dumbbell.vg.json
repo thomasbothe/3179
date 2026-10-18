@@ -10,7 +10,7 @@
     {"calculate": "datum['2024'] - datum['2015']", "as": "change"}
   ],
   "encoding": {
-    "y": {"field": "Reference area", "type": "nominal", "title": null, "sort": {"field": "2024", "op": "max", "order": "descending"}}
+    "y": {"field": "Reference area", "type": "nominal", "title": null, "sort": {"field": "2024", "order": "descending"}}
   },
   "layer": [
     {
@@ -21,11 +21,11 @@
       }
     },
     {
-      "mark": {"type": "circle", "size": 100, "color": "#b0bec5", "opacity": 1},
+      "mark": {"type": "circle", "size": 100, "color": "#b0bec5"},
       "encoding": {"x": {"field": "2015", "type": "quantitative", "title": "Life expectancy (years)"}}
     },
     {
-      "mark": {"type": "circle", "size": 100, "color": "#2590c8", "opacity": 1},
+      "mark": {"type": "circle", "size": 100, "color": "#2590c8"},
       "encoding": {
         "x": {"field": "2024", "type": "quantitative", "title": "Life expectancy (years)"},
         "tooltip": [
