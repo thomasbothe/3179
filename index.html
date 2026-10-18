@@ -15,87 +15,193 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
-    
-    <title>FIT3179 Assignment 2 </title>
 
+    <title>What Keeps Us Well?</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
+    <!-- Navigation Bar -->
+    <nav class="top-nav">
+        <a href="#outcomes">01 / Outcomes</a>
+        <a href="#money">02 / Money</a>
+        <a href="#behaviour">03 / Behaviour</a>
+        <a href="#access">04 / Access</a>
+        <a href="#australia">05 / Australia</a>
+    </nav>
+
     <div class="page-container">
 
         <header class="pure-g page-header">
             <div class="pure-u-1">
-                <h1>How do Health Outcomes Differ Around the World?</h1>
+                <h1>What Keeps Us Well?</h1>
+                <br>
                 <p class="introduction">
-                    Healthcare systems and life expectancy vary widely around the world. 
-                    But how do differences in resources and behaviour
-                    shape people's health outcomes, 
-                    and what role do they play in helping people live longer, healthier lives?
+                   Australians born today can expect to live to the age of 83,
+                   <br> 
+                   among the greatest life expectancy in the world. 
+                   <br>
+                   <br>
+                   However, around the world, outcomes vary drastically.
+                   <br>
+                   <br>
+                    This visualisation looks at healthcare expenditure, 
+                   how  
+                   <br>
+                   people live, and where care can be found.
                 </p>
+                <!-- By Line -->
+                <p class="byline">By Thomas Bothe · October 2026 · Data: see <a href="#sources">sources</a></p>
             </div>
         </header>
 
-        <div class="pure-g">
+        <!-- Headline Numbers-->
+        <div class="pure-g stat-row">
+            <div class="pure-u-1-3 stat"><span class="stat-number">83.0</span>years the average person born in Australia lives to (2024)</div>
+            <div class="pure-u-1-3 stat"><span class="stat-number">10.8%</span>of Australia's economy spent on healthcare (2024)</div>
+            <div class="pure-u-1-3 stat"><span class="stat-number">1,121</span>hospitals listed across Australia</div>
+        </div>
+
+        <!-- Part 1 -->
+        <div class="pure-g" id="outcomes">
+            <section class="pure-u-1 part-intro">
+                <p class="part-label">Part one / Life Expectancy</p>
+                <h2>Who lives longest?</h2>
+                <p>Life expectancy is the average number of years a newborn can expect to live. It is a simple way to compare how healthy whole populations are.</p>
+            </section>
+
+            <section class="pure-u-2-3 chart-section">
+                <div id="dumbbell_chart"></div>
+            </section>
+
+            <section class="pure-u-1-3 chart-section">
+                <h3>Life expectancy is improving, but not equally</h3>
+                <p class="chart-description">Every country displayed shows an increase in life expetancy between 2015 and 2024. 
+                    <br>
+                    <br>
+                    However, for countries that already had a high life expectancy (> 80), improvements are minimal.
+                    <br>
+                    <br> 
+                    Comparatively, India and Indonesia have substantially increased life expectancy in the same time period.</p>
+            </section>
+            <section class="pure-u-1 takeaway"><p>Living longer is the goal. So what do countries put in to get there?</p></section>
+        </div>
+
+        <!-- Part 2 -->
+        <div class="pure-g" id="money">
+            <section class="pure-u-1 part-intro">
+                <p class="part-label">Part two / Resources</p>
+                <h2>Does spending more lead to longer lives?</h2>
+                <p>Health spending is shown as a share of GDP, the total value of everything a country produces in a year. This lets us compare large and small economies fairly.</p>
+            </section>
             <section class="pure-u-1 chart-section">
-                <h2>Healthcare Expenditure</h2>
-                <p class="chart-description">
-                    Countries commit vastly different amounts to healthcare. <br>
-                    But does spending more translate into better health outcomes?
-                    
-                </p>
+                <h3>Australia spends about a tenth of its economy on health</h3>
+                <p class="chart-description">Australia (red) went from 10.1% of GDP in 2015 to 10.8% in 2024. Most countries in this group spend between 10% and 12%, and one stands well apart from the rest.</p>
                 <div id="expenditure_chart"></div>
             </section>
+            <section class="pure-u-1-3 chart-section">
+                <h3>The biggest spender is not the longest-lived</h3>
+                <p class="chart-description">In 2023 the United States spent 16.9% of GDP and its people lived 78.4 years on average. Japan spent 10.8% and reached 84.1 years. Mexico spent the least (5.7%) and had the lowest life expectancy of the eight.</p>
+            </section>
+            <section class="pure-u-2-3 chart-section">
+                <div id="bubble_chart"></div>
+            </section>
+            <section class="pure-u-1-3 chart-section">
+                <h3>Follow each country's path</h3>
+                <p class="chart-description">Each line joins one country's years from 2015 to 2024. Where a line climbs, life expectancy rose. Where it moves right, spending rose.</p>
+            </section>
+            <section class="pure-u-2-3 chart-section">
+                <div id="connected_chart"></div>
+            </section>
+            <section class="pure-u-1 takeaway"><p>Money matters, but it is not the whole story. What people do, and what is done to protect them, also counts.</p></section>
         </div>
 
-        <div class="pure-g">
+        <!-- Part 3 -->
+        <div class="pure-g" id="behaviour">
+            <section class="pure-u-1 part-intro">
+                <p class="part-label">Part three / Behaviour and prevention</p>
+                <h2>What do people do, and what protects them?</h2>
+                <p>Two examples: alcohol, a habit shaped by culture, and measles vaccination, a protection delivered by the health system.</p>
+            </section>
             <section class="pure-u-1-2 chart-section">
-                <h2>Alcohol Consumption</h2>
-                <p class="chart-description">
-                   Alcohol consumption varies widely across countries,
-                    shaped by cultural norms, values, and lifestyles.
-                </p>
+                <h3>Alcohol use differs across countries</h3>
+                <p class="chart-description">Alcohol consumption varies widely across countries, shaped by cultural norms, values, and lifestyles. Australia's average slipped from 10.1 litres per person in 2015 to 9.8 litres in 2023.</p>
                 <div id="alcohol_chart"></div>
             </section>
-
             <section class="pure-u-1-2 chart-section">
-                <h2>Life Expectancy</h2>
-                <p class="chart-description">
-                    Life expectancy offers a broader picture of population health, 
-                    reflecting differences in living conditions, healthcare systems and access to treatment. 
-                    Comparing countries reveals striking differences in how long people live.
-                </p>
-                <div id="life_expectancy_chart"></div>
-            </section>
-        </div>
-
-        <div class="pure-g">
-            <section class="pure-u-1-2 chart-section">
-                <h2>Hospitals</h2>
-                <p class="chart-description">
-                    Access to hospitals can have a drastic impact on the quality of healthcare people receive.
-                    In particular, people living in rural areas have significantly fewer resources available to them.
-                </p>
-                <div id="hospitals_chart"></div>
-            </section>
-
-            <section class="pure-u-1-2 chart-section">
-                <h2>Measles Vaccination</h2>
-                <p class="chart-description">
-                    Longer lives depend not only on treating illness, but also on preventing it. 
-                    Vaccination protects people from preventable diseases, but coverage varies between countries. 
-                    Do gaps in protection correlate with lower heatlh outcomes?
-                </p>
+                <h3>Vaccination coverage is far from even</h3>
+                <p class="chart-description">Across the 59 countries on this map, measles vaccination ranges from 54.2% to 99.7%. Australia sits at 92.7%. Darker blue means more people protected.</p>
                 <div id="measles_chart"></div>
             </section>
+            <section class="pure-u-1 takeaway"><p>Habits and prevention happen in communities. To reach them, people need to be able to reach a hospital.</p></section>
         </div>
+
+        <!-- Part 4 -->
+        <div class="pure-g" id="access">
+            <section class="pure-u-1 part-intro">
+                <p class="part-label">Part four / Access</p>
+                <h2>Where are Australia's hospitals?</h2>
+                <p>Access to hospitals can have a drastic impact on the quality of healthcare people receive. In particular, people living in rural areas have significantly fewer resources available to them.</p>
+            </section>
+            <section class="pure-u-1-2 chart-section">
+                <h3>Hospitals follow the people</h3>
+                <p class="chart-description">Each dot is one hospital. They gather along the south-east coast and around Perth, and thin out sharply inland.</p>
+                <div id="hospitals_chart"></div>
+            </section>
+            <section class="pure-u-1-2 chart-section">
+                <h3>Many dots hide the true clusters</h3>
+                <p class="chart-description">Counting hospitals in grid squares makes the clusters easy to compare. Bigger circles mean more hospitals in that square.</p>
+                <div id="symbols_chart"></div>
+            </section>
+            <section class="pure-u-1-3 chart-section">
+                <h3>Three states hold three quarters</h3>
+                <p class="chart-description">New South Wales (365), Victoria (257) and Queensland (221) hold about three quarters of the 1,121 hospitals listed. Note these are totals, not hospitals per person.</p>
+            </section>
+            <section class="pure-u-2-3 chart-section">
+                <div id="state_chart"></div>
+            </section>
+        </div>
+
+        <!-- Part 5 -->
+        <div class="pure-g" id="australia">
+            <section class="pure-u-1 part-intro">
+                <p class="part-label">Part five / Putting it together</p>
+                <h2>Where does Australia stand?</h2>
+                <p>Here is Australia (red) against every other country, on the three measures we have followed.</p>
+            </section>
+            <section class="pure-u-1 chart-section">
+                <div id="multiples_chart"></div>
+            </section>
+            <section class="pure-u-1 conclusion">
+                <h3>What the data says</h3>
+                <p>Australians live among the longest lives in this group while spending about a tenth of national income on health. The United States shows that spending more does not guarantee more years, and vaccination and hospital access show that outcomes also depend on how well care reaches people.</p>
+            </section>
+        </div>
+
+        <!-- Data sources and glossary-->
+        <footer class="pure-g sources" id="sources">
+            <div class="pure-u-1-2">
+                <h3>Where the data comes from</h3>
+                <ul>
+                    <li>Health spending, life expectancy, alcohol consumption and measles vaccination: OECD. <a href = "https://www.oecd.org/en/data/datasets/oecd-health-statistics.html"> View OECD data </a> </li>
+                    <li>Australian hospital locations: Australia Institute of Health and Welfare. <a href = "https://myhospitalsapi.aihw.gov.au/api/v1/reporting-units-downloads/mappings"> View Hospital location data</a> </li>
+                    <li>Country boundaries: Natural Earth. <a href = "https://naturalearthdata.com"> Country boundary data</a> </li>
+                </ul>
+            </div>
+            <div class="pure-u-1-2">
+                <h3>Words used on this page</h3>
+                <dl>
+                    <dt>Life expectancy</dt><dd>The average number of years a newborn is expected to live.</dd>
+                    <dt>% of GDP</dt><dd>A country's health spending divided by the value of everything it produces in a year.</dd>
+                    <dt>Measles vaccination</dt><dd>The share of people vaccinated against measles.</dd>
+                </dl>
+            </div>
+        </footer>
     </div>
 
     <script src="vega_lite_vis.js"></script>
 </body>
 </html>
-
-
 
 
 
