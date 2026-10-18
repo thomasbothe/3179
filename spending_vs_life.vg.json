@@ -1,0 +1,35 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json", 
+  "background": "transparent",
+  "title": "Spending vs life expectancy",
+  "width": "container",
+  "height": 380,
+  "data": {"url": "health_joined.csv"},
+  "params": [
+    {
+      "name": "Year_selection",
+      "value": 2023,
+      "bind": {"input": "range", "min": 2015, "max": 2024, "step": 1, "name": "Year: "}
+    }
+  ],
+  "transform": [
+    {"filter": "datum.TIME_PERIOD == Year_selection"}
+  ],
+  "encoding": {
+    "x": {"field": "Health spending (% of GDP)", "type": "quantitative", "scale": {"domain": [4, 18]}},
+    "y": {"field": "Life expectancy (years)", "type": "quantitative", "scale": {"domain": [74, 85]}}
+  },
+  "layer": [
+    {
+      "mark": {"type": "circle", "size": 220, "opacity": 0.8},
+      "encoding": {
+        "color": {"condition":{"test":"datum['Reference area'] == 'Australia'","value":"#e41a1c"},"value":"#b0bec5"},
+        "tooltip": [
+          {"field": "Reference area", "type": "nominal", "title": "Country"},
+          {"field": "Health spending (% of GDP)", "type": "quantitative", "format": ".1f"},
+          {"field": "Life expectancy (years)", "type": "quantitative", "format": ".1f"}
+        ]
+      }
+    }
+  ]
+}
