@@ -5,8 +5,8 @@
     "stroke": null
   },
   "title": "Percentage Vaccinated Against Measles",
-  "width": 700,
-  "height": 420,
+  "width": 520,
+  "height": 300,
   "projection": {
     "type": "equalEarth"
   },
@@ -41,7 +41,10 @@
               "url": "Measles_Data.csv"
             },
             "key": "Reference area",
-            "fields": ["OBS_VALUE", "TIME_PERIOD"]
+            "fields": [
+              "OBS_VALUE",
+              "TIME_PERIOD"
+            ]
           }
         },
         {
