@@ -1,0 +1,23 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json", "background": "transparent",
+  "title": "Hospitals by state and sector",
+  "width": "container",
+  "height": 300,
+  "data": {"url": "hospitals.csv"},
+  "transform": [{"filter": "isValid(datum.State) && datum.State != ''"}],
+  "mark": "bar",
+  "encoding": {
+    "y": {"field": "State", "type": "nominal", "title": null, "sort": {"field": "Name", "op": "count", "order": "descending"}},
+    "x": {"aggregate": "count", "type": "quantitative", "title": "Number of hospitals"},
+    "color": {
+      "field": "Sector",
+      "type": "nominal",
+      "scale": {"domain": ["Public", "Private"], "range": ["#173b57", "#9ecae1"]}
+    },
+    "tooltip": [
+      {"field": "State", "type": "nominal"},
+      {"field": "Sector", "type": "nominal"},
+      {"aggregate": "count", "type": "quantitative", "title": "Hospitals"}
+    ]
+  }
+}
