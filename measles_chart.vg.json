@@ -53,8 +53,7 @@
       ],
       "mark": {
         "type": "geoshape",
-        "stroke": "white",
-        "tooltip": true
+        "stroke": "white"
       },
       "encoding": {
         "color": {
