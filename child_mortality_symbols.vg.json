@@ -44,7 +44,7 @@
           }
         },
         {
-          "filter": "isValid(datum.lon) && isValid(datum['2024'])"
+          "filter": "isValid(datum.lon) && isValid(datum.lat) && isValid(datum['2024'])"
         }
       ],
       "mark": {
