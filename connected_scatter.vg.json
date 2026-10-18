@@ -1,5 +1,6 @@
 {
-  "$schema": "https://vega.github.io/schema/vega-lite/v5.json", "background": "transparent",
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json", 
+  "background": "transparent",
   "title": "Four countries, 2015 to 2024",
   "width": "container",
   "height": 380,
@@ -20,7 +21,7 @@
   },
   "layer": [
     {
-      "mark": {"type": "line", "point": true},
+      "mark": {"type": "circle"},
       "encoding": {
         "order": {"field": "TIME_PERIOD", "type": "ordinal"},
         "tooltip": [
