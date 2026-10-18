@@ -1,0 +1,40 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json", "background": "transparent",
+  "title": "Four countries, 2015 to 2024",
+  "width": "container",
+  "height": 380,
+  "data": {"url": "health_joined.csv"},
+  "transform": [
+    {"filter": "indexof(['Australia', 'United States', 'Japan', 'United Kingdom'], datum['Reference area']) >= 0"},
+    {"filter": "isValid(datum['Health spending (% of GDP)']) && isValid(datum['Life expectancy (years)'])"}
+  ],
+  "encoding": {
+    "x": {"field": "Health spending (% of GDP)", "type": "quantitative", "scale": {"zero": false}},
+    "y": {"field": "Life expectancy (years)", "type": "quantitative", "scale": {"zero": false}},
+    "color": {
+      "field": "Reference area",
+      "type": "nominal",
+      "title": "Country",
+      "scale": {"domain": ["Australia", "Japan", "United Kingdom", "United States"], "range": ["#e41a1c", "#377eb8", "#ff7f00", "#984ea3"]}
+    }
+  },
+  "layer": [
+    {
+      "mark": {"type": "line", "point": true},
+      "encoding": {
+        "order": {"field": "TIME_PERIOD", "type": "ordinal"},
+        "tooltip": [
+          {"field": "Reference area", "type": "nominal", "title": "Country"},
+          {"field": "TIME_PERIOD", "type": "ordinal", "title": "Year"},
+          {"field": "Health spending (% of GDP)", "type": "quantitative", "format": ".1f"},
+          {"field": "Life expectancy (years)", "type": "quantitative", "format": ".1f"}
+        ]
+      }
+    },
+    {
+      "transform": [{"filter": "datum.TIME_PERIOD == 2015 || datum.TIME_PERIOD == 2024"}],
+      "mark": {"type": "text", "align": "left", "dx": 8, "dy": -8, "fontSize": 11},
+      "encoding": {"text": {"field": "TIME_PERIOD", "type": "ordinal"}}
+    }
+  ]
+}
