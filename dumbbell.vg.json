@@ -1,0 +1,40 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json", "background": "transparent",
+  "title": "Life expectancy: 2015 (grey) to 2024 (blue)",
+  "width": "container",
+  "height": 300,
+  "data": {"url": "Life_Expectancy.csv"},
+  "transform": [
+    {"filter": "datum.TIME_PERIOD == 2015 || datum.TIME_PERIOD == 2024"},
+    {"pivot": "TIME_PERIOD", "value": "OBS_VALUE", "groupby": ["Reference area"]},
+    {"calculate": "datum['2024'] - datum['2015']", "as": "change"}
+  ],
+  "encoding": {
+    "y": {"field": "Reference area", "type": "nominal", "title": null, "sort": {"field": "2024", "op": "max", "order": "descending"}}
+  },
+  "layer": [
+    {
+      "mark": {"type": "rule", "color": "#cfd8dc", "strokeWidth": 3},
+      "encoding": {
+        "x": {"field": "2015", "type": "quantitative", "scale": {"zero": false}, "title": "Life expectancy (years)"},
+        "x2": {"field": "2024"}
+      }
+    },
+    {
+      "mark": {"type": "circle", "size": 100, "color": "#b0bec5", "opacity": 1},
+      "encoding": {"x": {"field": "2015", "type": "quantitative", "title": "Life expectancy (years)"}}
+    },
+    {
+      "mark": {"type": "circle", "size": 100, "color": "#2590c8", "opacity": 1},
+      "encoding": {
+        "x": {"field": "2024", "type": "quantitative", "title": "Life expectancy (years)"},
+        "tooltip": [
+          {"field": "Reference area", "type": "nominal", "title": "Country"},
+          {"field": "2015", "type": "quantitative", "title": "2015"},
+          {"field": "2024", "type": "quantitative", "title": "2024"},
+          {"field": "change", "type": "quantitative", "title": "Change (years)", "format": "+.1f"}
+        ]
+      }
+    }
+  ]
+}
