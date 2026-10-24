@@ -9,6 +9,7 @@ var vg_8 = "dumbbell.vg.json";
 var vg_9 = "small_multiples.vg.json";
 var vg_10 = "child_mortality_symbols.vg.json";
 var vg_11 = "hospitals_by_state.vg.json";
+var vg_12 = "life_expectancy_choro.vg.json";
  
 vegaEmbed("#alcohol_chart", vg_1, {actions: false})
 .then(function(result) {
@@ -52,6 +53,10 @@ vegaEmbed("#symbols_chart", vg_10, {actions: false})
 }).catch(console.error);
  
 vegaEmbed("#state_chart", vg_11, {actions: false})
+.then(function(result) {
+}).catch(console.error);
+
+vegaEmbed("#life_expect_chart", vg_12, {actions: false})
 .then(function(result) {
 }).catch(console.error);
 
