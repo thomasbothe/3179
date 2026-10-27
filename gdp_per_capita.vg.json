@@ -1,0 +1,194 @@
+
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "background": "transparent",
+  "title": "Life Expectancy vs GDP Per Capita",
+  "width": "container",
+  "height": 380,
+  "data": {
+    "url": "expectancy_expenditure.csv"
+  },
+  "params": [
+    {
+      "name": "continent_choice",
+      "value": "None",
+      "bind": {
+        "input": "select",
+        "options": [
+          "None",
+          "Africa",
+          "Asia",
+          "Europe",
+          "North America",
+          "South America",
+          "Oceania"
+        ],
+        "name": "Select continent: "
+      }
+    }
+  ],
+  "transform": [
+    {
+      "filter": "isValid(datum['2023 GDP Per Capita']) && isValid(datum['2023 Life Expectancy']) && isFinite(toNumber(datum['2023 GDP Per Capita'])) && isFinite(toNumber(datum['2023 Life Expectancy'])) && toNumber(datum['2023 GDP Per Capita']) > 0 && toNumber(datum['2023 Life Expectancy']) > 0"
+    }
+  ],
+  "layer": [
+    {
+      "mark": {
+        "type": "circle",
+        "size": 80
+      },
+      "encoding": {
+        "x": {
+          "field": "2023 Life Expectancy",
+          "type": "quantitative",
+          "title": "Life Expectancy (years)",
+          "scale": {
+            "zero": false
+          }
+        },
+        "y": {
+          "field": "2023 GDP Per Capita",
+          "type": "quantitative",
+          "title": "GDP Per Capita",
+          "scale": {
+            "type": "log",
+            "domain": [100, 300000]
+          }
+        },
+        "color": {
+          "field": "Continent",
+          "type": "nominal",
+          "title": "Continent",
+          "scale": {
+            "domain": [
+              "Asia",
+              "Africa",
+              "Europe",
+              "North America",
+              "Oceania",
+              "South America"
+            ],
+            "range": [
+              "#e41a1c",
+              "#984ea3",
+              "#ff7f00",
+              "#a6cee3",
+              "#377eb8",
+              "#a65628"
+            ]
+          }
+        },
+        "tooltip": [
+          {
+            "field": "Country Name",
+            "type": "nominal",
+            "title": "Country"
+          },
+          {
+            "field": "Continent",
+            "type": "nominal",
+            "title": "Continent"
+          },
+          {
+            "field": "2023 GDP Per Capita",
+            "type": "quantitative",
+            "title": "GDP Per Capita",
+            "format": ",.0f"
+          },
+          {
+            "field": "2023 Life Expectancy",
+            "type": "quantitative",
+            "title": "Life Expectancy (years)",
+            "format": ".1f"
+          }
+        ],
+        "opacity": {
+          "condition": {
+            "test": "continent_choice === 'None' || datum.Continent === continent_choice",
+            "value": 0.7
+          },
+          "value": 0.2
+        }
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": {
+            "field": "Country Name",
+            "oneOf": [
+              "Australia",
+              "Japan",
+              "Nigeria",
+              "India",
+              "China",
+              "Brazil",
+              "Burundi",
+              "Seychelles",
+              "Afghanistan",
+              "Singapore",
+              "Monaco",
+              "Moldova",
+              "United Kingdom",
+              "Canada",
+              "United States of America",
+              "Haiti",
+              "Nicaragua",
+              "Bolivia",
+              "Guyana",
+              "Chile",
+              "New Zealand",
+              "Nauru",
+              "Solomon Islands"
+            ]
+          }
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "middle",
+        "dx": 8,
+        "dy": 3,
+        "fontSize": 12,
+        "fontWeight": "bold",
+        "color": "black",
+        "stroke": "white",
+        "strokeWidth": 0.5,
+        "strokeJoin": "round"
+      },
+      "encoding": {
+        "x": {
+          "field": "2023 Life Expectancy",
+          "type": "quantitative",
+          "scale": {
+            "zero": false
+          }
+        },
+        "y": {
+          "field": "2023 GDP Per Capita",
+          "type": "quantitative",
+          "scale": {
+            "type": "log",
+            "domain": [100, 300000]
+          }
+        },
+        "text": {
+          "field": "Country Name",
+          "type": "nominal"
+        },
+        "opacity": {
+          "condition": {
+            "test": "continent_choice !== 'None' && datum.Continent === continent_choice",
+            "value": 1
+          },
+          "value": 0
+        }
+      }
+    }
+  ]
+}
+
+
+
