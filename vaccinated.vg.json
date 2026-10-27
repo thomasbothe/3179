@@ -4,7 +4,7 @@
   "background": "transparent",
   "title": {
     "text": "Vaccination Coverage by Country and Vaccine",
-    "subtitle": "Coverage percentage across five vaccine types"
+    "subtitle": "Coverage percentage across six vaccine types"
   },
   "width": "container",
   "height": 500,
