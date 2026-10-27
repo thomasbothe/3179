@@ -14,7 +14,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 
     <title>What Keeps Us Well?</title>
     <link rel="stylesheet" href="style.css">
@@ -23,11 +23,11 @@
 <body>
     <!-- Navigation Bar -->
     <nav class="top-nav">
-        <a href="#outcomes">01 / Outcomes</a>
-        <a href="#money">02 / Money</a>
-        <a href="#behaviour">03 / Behaviour</a>
-        <a href="#access">04 / Access</a>
-        <a href="#australia">05 / Australia</a>
+        <a href="#the_gap">01 / The Gap</a>
+        <a href="#change_over_time">02 / Change Over Time</a>
+        <a href="#spending">03 / Spending</a>
+        <a href="#resources">04 / Resources</a>
+        <a href="#australia_vs_world">05 / Australia vs World</a>
     </nav>
 
     <div class="page-container">
@@ -35,8 +35,11 @@
         <header class="pure-g page-header">
             <div class="pure-u-1">
                 <h1>What Keeps Us Well?</h1>
-                <br>
+            </div>
+            <div class="pure-u-1-2">
                 <p class="introduction">
+                <br>
+                <br>
                    Australians born today can expect to live to the age of 83,
                    <br> 
                    among the greatest life expectancy in the world. 
@@ -45,27 +48,25 @@
                    However, around the world, outcomes vary drastically.
                    <br>
                    <br>
-                    This visualisation looks at healthcare expenditure, 
-                   how  
+                    This visualisation looks at healthcare expenditure 
                    <br>
-                   people live, and access to care to see how these factors 
+                   and access to care to see how these factors 
                    <br>
                    shape life expectancy around the world.
                 </p>
                 <!-- By Line -->
                 <p class="byline">By Thomas Bothe · October 2026 · Data: see <a href="#sources">sources</a></p>
             </div>
+
+            <div class="pure-u-1-2 header-stats">
+                <div class="pure-u-1 stat"><span class="stat-number">73.7</span>years is the average global life expectancy</div>
+                <div class="pure-u-1 stat"><span class="stat-number">37.4</span>out of 1000 children will die before the age of 5</div>
+                <div class="pure-u-1 stat"><span class="stat-number">32%</span>of people in the world will die from heart disease, the most common cause of death</div>
+            </div>
         </header>
 
-        <!-- Headline Numbers-->
-        <div class="pure-g stat-row">
-            <div class="pure-u-1-3 stat"><span class="stat-number">83.0</span>years the average person born in Australia lives to (2024)</div>
-            <div class="pure-u-1-3 stat"><span class="stat-number">10.8%</span>of Australia's economy spent on healthcare (2024)</div>
-            <div class="pure-u-1-3 stat"><span class="stat-number">1,121</span>hospitals listed across Australia</div>
-        </div>
-
         <!-- Part 1 -->
-        <div class="pure-g" id="outcomes">
+        <div class="pure-g" id="the_gap">
             <section class="pure-u-1 part-intro">
                 <p class="part-label">Part one / The Gap</p>
                 <h2>Where you are born matters</h2>
@@ -77,14 +78,15 @@
             </section>
 
             <section class="pure-u-1-3 chart-section">
-                <h3>Life expectancy is improving, but not equally</h3>
-                <p class="chart-description">Every country displayed shows an increase in life expetancy between 2015 and 2024. 
+                <h3>Decades apart</h3>
+                <p class="chart-description">In Australia, Japan, Canada and much of Western Europe, a newborn can expect to live well into their 80s.
                     <br>
                     <br>
-                    However, for countries that already had a high life expectancy (> 80), improvements are minimal.
+                    Across much of sub-Saharan Africa, the picture is very different. Life expectancy is often 20 or more years shorter.
                     <br>
-                    <br> 
-                    Comparatively, India and Indonesia have substantially increased life expectancy in the same time period.</p>
+                    <br>
+                    Between these extremes lies a broad middle. Latin America, the Middle East and much of Asia fall in the 60s and 70s, 
+                    closer to wealthier countries than to the lowest-ranked ones, but still substantially lower.</p>
             </section>
 
             <section class="pure-u-2-3 chart-section">
@@ -92,109 +94,270 @@
             </section>
 
             <section class="pure-u-1-3 chart-section">
-                <h3>Where children are most at risk</h3>
-                <p class="chart-description">Each circle is a country, sized by how many children die before their fifth birthday for every 1,000 born (2024). 
+                <h3>Five years, two realities</h3>
+                <p class="chart-description">Two children are born on the same day. One is born in Nigeria, where about 116 of every 1,000 children will not live to see their fifth birthday. 
+                    The other is born in Australia, where that number is under 4.
                     <br>
                     <br>
-                    In Nigeria it is about 116. In Australia it is about 4. 
+                    Neither child has done anything to earn their odds. 
                     <br>
                     <br>
-                    Rates have fallen in many countries since 2015, for example in Afghanistan, from 71.9 to 53.0.
+                    Across West and Central Africa, early childhood is far more dangerous than almost anywhere else on the planet. 
+                    In Europe, it is rare for a family to lose a child this young.
+                    <br>
+                    <br>
+                    Between the extremes, the story is less uniform. 
+                    Parts of South Asia and the Pacific sit in the middle, and neighbouring countries can look surprisingly different from one another.
 
                 </p>
             </section>
-            <section class="pure-u-1 takeaway"><p>Living longer is the goal. So what do countries put in to get there?</p></section>
+
+            <section class="pure-u-2-3 chart-section">
+                <div id="cause_death_chart"></div>
+            </section>
+
+            <section class="pure-u-1-3 chart-section">
+                <br>
+                <br>
+                <br>
+                <br>
+                <h3>Diseases of the old, diseases of the young</h3>
+                <p class="chart-description">Not only does the age at which people die vary, but also how they die. 
+                    <br>
+                    <br>
+                    In countries where the life expectancy exceeds 80 years, people mostly die from non-communicable diseases such as heart disease and cancer.
+                    <br>
+                    <br>
+                    Contrastingly, in countries with low life expectancies, deaths from infectious diseases such as malaria and HIV/AIDS see a significant spike.
+
+                </p>
+            </section>
+            <section class="pure-u-1 takeaway"><p>Outcomes vary greatly. But are they improving?</p></section>
         </div>
 
         <!-- Part 2 -->
-        <div class="pure-g" id="money">
+        <div class="pure-g" id="change_over_time">
             <section class="pure-u-1 part-intro">
-                <p class="part-label">Part two / Resources</p>
-                <h2>Does spending more lead to longer lives?</h2>
-                <p>Health spending is shown as a share of GDP, the total value of everything a country produces in a year. This lets us compare large and small economies fairly.</p>
+                <p class="part-label">Part two / Change Over Time</p>
+                <h2>Life expectancy is increasing throughout the world</h2>
+                <p>Since 2000, people across the world have gained years of life, though the gains are uneven and a few disruptions have set them back.</p>
             </section>
-            <section class="pure-u-1 chart-section">
-                <h3>Australia spends about a tenth of its economy on health</h3>
-                <p class="chart-description">Australia (red) went from 10.1% of GDP in 2015 to 10.8% in 2024. Most countries in this group spend between 10% and 12%, and one stands well apart from the rest.</p>
-                <div id="expenditure_chart"></div>
-            </section>
+
             <section class="pure-u-1-3 chart-section">
-                <h3>The biggest spender is not the longest-lived</h3>
-                <p class="chart-description">In 2023 the United States spent 16.9% of GDP and its people lived 78.4 years on average. Japan spent 10.8% and reached 84.1 years. Mexico spent the least (5.7%) and had the lowest life expectancy of the eight.</p>
+                <br>
+                <h3>Rising, with setbacks</h3>
+                <p class="chart-description">Over the past 25 years, life expectancy has been consistently increasing, with some notable exceptions.
+                    <br>
+                    <br>
+                    Most countries saw a decline in 2020 and 2021 during covid before continuing to increase again thereafter.
+                    <br>
+                    <br>
+                    One other notable dip can be seen in 2010 in Haiti as a magnitude 7.0 earthquake hit, killing 300,000.
+                </p>
             </section>
+
             <section class="pure-u-2-3 chart-section">
-                <div id="bubble_chart"></div>
+                <div id="line_chart"></div>
             </section>
+
             <section class="pure-u-1-3 chart-section">
-                <h3>Follow each country's path</h3>
-                <p class="chart-description">Each line joins one country's years from 2015 to 2024. Where a line climbs, life expectancy rose. Where it moves right, spending rose.</p>
+                <br>
+                <h3>Big gains, but a long way to go</h3>
+                <p class="chart-description">In most countries, fewer children die before their fifth birthday than in 2015. The biggest falls came where the toll was heaviest. 
+                    <br>
+                    <br>
+                    In Afghanistan, Burundi, Haiti and India, the rate dropped by roughly 15 to 20 deaths for every 1,000 births.
+                    <br>
+                    <br>
+                    Nigeria is the exception among the high rate countries. Its rate barely moved, from about 118 to 116, and it remains more than double that of any other country on the chart.
+                    <br>
+                    <br>
+                    At the other end, Australia, Japan, Singapore and much of Europe started low and stayed low, so there was little room left to improve.</p>
             </section>
+
             <section class="pure-u-2-3 chart-section">
-                <div id="connected_chart"></div>
+                <div id="dumbbell_chart"></div>
             </section>
-            <section class="pure-u-1 takeaway"><p>Money matters, but it is not the whole story. What people do, and what is done to protect them, also counts.</p></section>
+
+            <section class="pure-u-1 takeaway"><p>Life expectancy is increasing but if we want it to continue to improve, what should we focus on?</p></section>
         </div>
 
         <!-- Part 3 -->
-        <div class="pure-g" id="behaviour">
+        <div class="pure-g" id="spending">
             <section class="pure-u-1 part-intro">
-                <p class="part-label">Part three / Behaviour and prevention</p>
-                <h2>What do people do, and what protects them?</h2>
-                <p>Two examples: alcohol, a habit shaped by culture, and measles vaccination, a protection delivered by the health system.</p>
+                <p class="part-label">Part three / Spending</p>
+                <h2>Spending more is not necessarily the answer</h2>
+                <p>You might expect that countries that focus their resources towards spending on healthcare would experience greater life expectancies. This is not the case though. 
+                </p>
             </section>
-            <section class="pure-u-1-2 chart-section">
-                <h3>Alcohol use differs across countries</h3>
-                <p class="chart-description">Alcohol consumption varies widely across countries, shaped by cultural norms, values, and lifestyles. Australia's average slipped from 10.1 litres per person in 2015 to 9.8 litres in 2023.</p>
-                <div id="alcohol_chart"></div>
-            </section>
-            <section class="pure-u-1-2 chart-section">
-                <h3>Vaccination coverage is far from even</h3>
-                <p class="chart-description">Across the 59 countries on this map, measles vaccination ranges from 54.2% to 99.7%. Australia sits at 92.7%. Darker blue means more people protected.</p>
-                <div id="measles_chart"></div>
-            </section>
-            <section class="pure-u-1 takeaway"><p>Habits and prevention happen in communities. To reach them, people need to be able to reach a hospital.</p></section>
-        </div>
 
-        <!-- Part 4 -->
-        <div class="pure-g" id="access">
-            <section class="pure-u-1 part-intro">
-                <p class="part-label">Part four / Access</p>
-                <h2>Where are Australia's hospitals?</h2>
-                <p>Access to hospitals can have a drastic impact on the quality of healthcare people receive. In particular, people living in rural areas have significantly fewer resources available to them.</p>
+            <section class="pure-u-2-3 chart-section">
+                <div id="spending_chart"></div>
             </section>
 
             <section class="pure-u-1-3 chart-section">
-                <h3>Hospitals follow the people</h3>
-                <p class="chart-description">Each dot is one hospital. They gather along the south-east coast and around Perth, and thin out sharply inland.</p>
+                <br>
+                <br>
+                <br>
+                <h3>Prioritising healthcare spending does not lead to longer lives</h3>
+                <p class="chart-description">The U.S. spends 16.9% of their country's economy on healthcare, leading to people living to 78.4 years on average. 
+                    <br>
+                    <br>
+                    Japan spends 10.8%, and yet people live to 84.1.
+                    <br>
+                    <br>
+                    Tuvalu, a small Pacific nation, devotes more than a quarter of its economy to healthcare and yet their people still live almost two decades less than the Japanese.
+                </p>
+            </section>
+
+            <section class="pure-u-2-3 chart-section">
+                <div id="percapita_chart"></div>
+            </section>
+
+            <section class="pure-u-1-3 chart-section">
+                <br>
+                <br>
+                <br>
+                <h3>GDP per capita closely follows lifespan</h3>
+                <p class="chart-description">GDP per capita, on the other hand, tends to be a much greater predictor of life expectancy.
+                    <br>
+                    <br>
+                    As GDP per capita increases, life expectancy also tends to increase, indicating that the resources an individual has access to may be more important to longevity than how much focus their government places on healthcare spending, provided they have access to adequate healthcare resources in the first place.
+                </p>
+            </section>
+
+            <section class="pure-u-1 takeaway"><p>Money may partially explain life expectancy, but its not the full story. People need access to resources too.</p></section>
+        </div>
+
+        <!-- Part 4 -->
+        <div class="pure-g" id="resources">
+            <section class="pure-u-1 part-intro">
+                <p class="part-label">Part four / Resources</p>
+                <h2>Resources Matter</h2>
+                <p>Access to care is more than money. It's whether a hospital has a bed free, and whether a child gets vaccinated. Across the countries shown, both vary enormously, and the gaps don't follow wealth neatly.</p>
+            </section>
+
+            <section class="pure-u-1-3 chart-section">
+                <br>
+                <br>
+                <h3>Hospital Beds</h3>
+                <p class="chart-description">The number of hospital beds per 1000 people varies dramatically.
+                    <br>
+                    <br>
+                    Although the countries with the most hospital beds per 1000 people tend to have high life expectancies, a country does not necessarily need a high number of beds to enjoy a high life expectancy.
+                    <br>
+                    <br>
+                    For example, Australia only has 2.5 hospital beds per 1000 people and has a life expectancy of 83, while Japan has 12.5 beds per 1000 people and has a life expectancy of 84 years. 
+                </p>               
+            </section>
+
+            <section class="pure-u-2-3 chart-section">
+                <div id="lollipop_chart"></div>
+            </section>
+
+            <section class="pure-u-1-3 chart-section">
+                <br>
+                <br>
+                <h3>Vaccination coverage is far from even</h3>
+                <p class="chart-description">For most of the vaccines on this chart, coverage is high where health systems are strong. 
+                    <br>
+                    <br>
+                    In Singapore, Chile, China and Nicaragua, almost every cell is the darkest blue, meaning nearly everyone is vaccinated.
+                    <br>
+                    <br>
+                    Further down the chart, the colours fade. In Nigeria, Afghanistan, Haiti and Bolivia, even long established vaccines like DPT and polio reach noticeably fewer people.
+                    <br>
+                    <br>
+                    Covid is the most uneven. Guyana, Moldova and the Solomon Islands sit far below their results for other vaccines, while Nauru does the opposite, with strong Covid coverage despite lower rates elsewhere.</p>
+            </section>
+
+             <section class="pure-u-2-3 chart-section">
+                <div id="vaccinated_chart"></div>
+            </section>           
+
+
+            <section class="pure-u-1-3 chart-section">
+                <br>
+                <br>
+                <br>
+                <br>
+                <h3>Healthcare follows the people</h3>
+                <p class="chart-description">One thing to note is that national statistics can be deceiving. Although Australia may have great access to resources on average, the story changes when moving into regional and rural areas.
+                    <br>
+                    <br>
+                    From the map, it's clear to see that major population centres have access to many healthcare resources, while those living in rural QLD, NT, & WA must travel extensive distances to receive healthcare.
+                </p>
             </section>
 
             <section class="pure-u-2-3 chart-section">
                 <div id="hospitals_chart"></div>
             </section>
 
-            <section class="pure-u-1-3 chart-section">
-                <h3>Three states hold three quarters</h3>
-                <p class="chart-description">New South Wales (365), Victoria (257) and Queensland (221) hold about three quarters of the 1,121 hospitals listed. Note these are totals, not hospitals per person.</p>
-            </section>
-            <section class="pure-u-2-3 chart-section">
-                <div id="state_chart"></div>
-            </section>
+            <section class="pure-u-1 takeaway"><p>Knowing that spending and access to resources can make a difference, where does Australia stand on an intentional level?</p></section>
         </div>
 
         <!-- Part 5 -->
-        <div class="pure-g" id="australia">
+        <div class="pure-g" id="australia_vs_world">
             <section class="pure-u-1 part-intro">
-                <p class="part-label">Part five / Putting it together</p>
-                <h2>Where does Australia stand?</h2>
-                <p>Here is Australia (red) against every other country, on the three measures we have followed.</p>
+                <p class="part-label">Part five / Australia vs World</p>
+                <h2>Australia sits significantly above the global average</h2>
+                <p>Across all key metrics, Australia sits above the global average. So whilst individually these metrics may lead to greater life expectancy, it is likely the combination of them that results in Australians living longer than almost anyone else in the world.</p>
             </section>
-            <section class="pure-u-1 chart-section">
-                <div id="multiples_chart"></div>
+
+            <section class="pure-u-2-3 chart-section">
+                <div id="pop_pyramid_chart"></div>
+            </section>
+
+            <section class="pure-u-1-3 chart-section">
+                <br>
+                <br>
+                <h3>Significantly lower child mortality and greater longevity</h3>
+                <p class="chart-description">The high life expectancy in Australia is the result of two key things.
+                    <br>
+                    <br>
+                    Firstly, the percentage people born that die before the age of 5 is more than times lower than the global average in Australia.
+                    <br>
+                    <br>
+                    In addition to fewer young deaths, Australians also tend to live into their 80s and 90s whereas on average around the world people are more likely to die in their late 60s and 70s.
+                </p>
+            </section>
+
+            <section class="pure-u-2-3 chart-section">
+                <div id="radar_chart"></div>
+            </section>
+
+            <section class="pure-u-1-3 chart-section">
+                <br>
+                <br>
+                <br>
+                <br>
+                <h3>Prosperity across the board leads to longer lives</h3>
+                <p class="chart-description">Australians enjoy significantly above average resources and access to care, all of which culminates in greater health outcomes.
+                    <br>
+                    <br>
+                    Although the gap is substantial in some categories, life expectancy is only about 10 years higher. This is partly because the world average has been climbing for decades, which has narrowed the distance between the highest life expectancy countries and the rest of the world.
+                </p>
             </section>
             <section class="pure-u-1 conclusion">
-                <h3>What the data says</h3>
-                <p>Australians live among the longest lives in this group while spending about a tenth of national income on health. The United States shows that spending more does not guarantee more years, and vaccination and hospital access show that outcomes also depend on how well care reaches people.</p>
+                <h3>What it all adds up to</h3>
+                <p>A child's chances at life begin at birth. 
+                <br>
+                <br>
+                    Born in Australia, you can expect to live to about 83, and almost every child will see their fifth birthday. 
+                    <br>
+                    <br>
+                    Born in Nigeria, you face strikingly different odds.
+                    <br>
+                    <br>
+                    Money is part of the answer, but not all of it. The United States spends more of its economy on health than any other country wealthy nation, yet its people live years less than many similarly wealthy nations, who spend far less. 
+                    <br>
+                    <br>
+                    What counts is whether care reaches people and resources are available: vaccines are delivered, a hospital is within reach, clean water is available, medical expenses can be paid for.
+                    <br>
+                    <br>
+                    The countries that do best are the ones that make these resources available for everyone.</p>
             </section>
+
         </div>
 
         <!-- Data sources and glossary-->
@@ -202,17 +365,21 @@
             <div class="pure-u-1-2">
                 <h3>Where the data comes from</h3>
                 <ul>
-                    <li>Health spending, life expectancy, alcohol consumption and measles vaccination: OECD. <a href = "https://www.oecd.org/en/data/datasets/oecd-health-statistics.html"> View OECD data </a> </li>
-                    <li>Australian hospital locations: Australia Institute of Health and Welfare. <br> <a href = "https://myhospitalsapi.aihw.gov.au/api/v1/reporting-units-downloads/mappings"> View Hospital location data</a> </li>
-                    <li>Country boundaries: Natural Earth. <a href = "https://naturalearthdata.com"> Country boundary data</a> </li>
+                    <li>Life expectancy, child mortality rate, healthcare expenditure, <br> GDP per capita, hospital beds: World Bank. <a href = "https://databank.worldbank.org/home.aspx"> <br> View World Bank data </a> </li>
+                    <li>Cause of death: Institute for Health Metrics and Evaluation. <a href = "https://www.healthdata.org/research-analysis/gbd-data"> <br> View IHME data</a> </li>
+                    <li>Australian hospital beds: Australian Institute of Health and Welfare. <a href = "https://www.aihw.gov.au/hospitals/topics/hospital-resources/public-hospital-beds"> <br> View hospital bed data</a> </li>
+                    <li>Australian hospital locations: Australian Institute of Health and Welfare <a href = "https://myhospitalsapi.aihw.gov.au/api/v1/reporting-units-downloads/mappings"> <br> View hospital location data</a> </li>
+                    <li>Vaccinations: World Health Organisation. <a href = "https://immunizationdata.who.int/"> <br> View WHO data</a></li>
+                    <li>Death by age group: United Nations World Population Prospects. <a href = "https://population.un.org/wpp/"> <br> View United Nations data</a> </li>
+                    <li>Australian deaths by age group: Australian Bureau of Statistics. <a href = "https://www.abs.gov.au/statistics/people/population/deaths-australia/latest-release"> <br> View ABS data</a> </li>
+                    <li>Country boundaries: Natural Earth. <a href = "https://naturalearthdata.com"> <br> View country boundary data</a> </li>
                 </ul>
             </div>
             <div class="pure-u-1-2">
-                <h3>Words used on this page</h3>
+                <h3>Terms used on this page</h3>
                 <dl>
                     <dt>Life expectancy</dt><dd>The average number of years a newborn is expected to live.</dd>
-                    <dt>% of GDP</dt><dd>A country's health spending divided by the value of everything it produces in a year.</dd>
-                    <dt>Measles vaccination</dt><dd>The share of people vaccinated against measles.</dd>
+                    <dt>Healthcare spending as % of GDP</dt><dd>A country's health spending divided by the value of everything it produces in a year.</dd>
                 </dl>
             </div>
         </footer>
