@@ -48,7 +48,7 @@
           }
         },
         "y": {
-          "field": "2023 GDP Per Capita",
+          "field": "2023 GDP Per Capita ($USD)",
           "type": "quantitative",
           "title": "GDP Per Capita",
           "scale": {
