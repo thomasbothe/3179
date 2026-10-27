@@ -1,0 +1,119 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "background": "transparent",
+  "title": {
+    "text": "Hospital Beds per 1,000 People"
+  },
+  "width": "container",
+  "height": 500,
+  "data": {
+    "url": "Hospital_Beds.csv"
+  },
+  "transform": [
+    {
+      "filter": "isValid(datum['Hospital Beds']) && isValid(datum['Country Name'])"
+    },
+    {
+      "calculate": "({\"Afghanistan\": \"Asia\", \"Australia\": \"Oceania\", \"Bolivia\": \"South America\", \"Brazil\": \"South America\", \"Burundi\": \"Africa\", \"Canada\": \"North America\", \"Chile\": \"South America\", \"China\": \"Asia\", \"Guyana\": \"South America\", \"Haiti\": \"North America\", \"India\": \"Asia\", \"Japan\": \"Asia\", \"Moldova\": \"Europe\", \"Monaco\": \"Europe\", \"Nauru\": \"Oceania\", \"New Zealand\": \"Oceania\", \"Nicaragua\": \"North America\", \"Nigeria\": \"Africa\", \"Seychelles\": \"Africa\", \"Singapore\": \"Asia\", \"United Kingdom\": \"Europe\", \"United States\": \"North America\"})[datum['Country Name']]",
+      "as": "Continent"
+    }
+  ],
+  "encoding": {
+    "y": {
+      "field": "Country Name",
+      "type": "nominal",
+      "sort": {
+        "op": "mean",
+        "field": "Hospital Beds",
+        "order": "descending"
+      },
+      "title": "Country",
+      "axis": {
+        "labelLimit": 150
+      }
+    },
+    "x": {
+      "field": "Hospital Beds",
+      "type": "quantitative",
+      "title": "Hospital beds per 1,000 people",
+      "scale": {
+        "zero": true
+      }
+    }
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "rule",
+        "strokeWidth": 2
+      },
+      "encoding": {
+        "x": {
+          "datum": 0
+        },
+        "x2": {
+          "field": "Hospital Beds"
+        },
+        "color": {
+          "value": "#b8c4cc"
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "circle",
+        "size": 100
+      },
+      "encoding": {
+        "color": {
+          "field": "Continent",
+          "type": "nominal",
+          "title": "Continent",
+          "scale": {
+            "domain": [
+              "Asia",
+              "Africa",
+              "Europe",
+              "North America",
+              "Oceania",
+              "South America"
+            ],
+            "range": [
+              "#e41a1c",
+              "#984ea3",
+              "#ff7f00",
+              "#a6cee3",
+              "#377eb8",
+              "#a65628"
+            ]
+          }
+        },
+        "tooltip": [
+          {
+            "field": "Country Name",
+            "type": "nominal",
+            "title": "Country"
+          },
+          {
+            "field": "Continent",
+            "type": "nominal"
+          },
+          {
+            "field": "Hospital Beds",
+            "type": "quantitative",
+            "title": "Beds per 1,000",
+            "format": ".2f"
+          }
+        ]
+      }
+    }
+  ],
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "grid": false
+    }
+  }
+}
