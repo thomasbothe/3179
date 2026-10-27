@@ -1,35 +1,128 @@
 {
-  "$schema": "https://vega.github.io/schema/vega-lite/v5.json", 
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "background": "transparent",
-  "title": "Spending vs life expectancy",
+  "title": "Spending vs life expectancy (2023)",
   "width": "container",
   "height": 380,
-  "data": {"url": "health_joined.csv"},
-  "params": [
-    {
-      "name": "Year_selection",
-      "value": 2023,
-      "bind": {"input": "range", "min": 2015, "max": 2024, "step": 1, "name": "Year: "}
-    }
-  ],
-  "transform": [
-    {"filter": "datum.TIME_PERIOD == Year_selection"}
-  ],
+  "data": {
+    "url": "expectancy_expenditure.csv"
+  },
   "encoding": {
-    "x": {"field": "Health spending (% of GDP)", "type": "quantitative", "scale": {"domain": [4, 18]}},
-    "y": {"field": "Life expectancy (years)", "type": "quantitative", "scale": {"domain": [74, 85]}}
+    "x": {
+      "field": "2023 Life Expectancy",
+      "type": "quantitative",
+      "title": "Life Expectancy (years)",
+      "scale": {
+        "domain": [
+          50,
+          90
+        ]
+      }
+    },
+    "y": {
+      "field": "2023 GDP",
+      "type": "quantitative",
+      "title": "Healthcare Spending as % of GDP"
+    }
   },
   "layer": [
     {
-      "mark": {"type": "circle", "size": 220, "opacity": 0.8},
+      "params": [
+        {
+          "name": "continent_highlight",
+          "select": {
+            "type": "point",
+            "fields": [
+              "Continent"
+            ]
+          },
+          "bind": "legend"
+        }
+      ],
+      "mark": {
+        "type": "circle",
+        "size": 80
+      },
       "encoding": {
-        "color": {"condition":{"test":"datum['Reference area'] == 'Australia'","value":"#e41a1c"},"value":"#b0bec5"},
+        "color": {
+          "field": "Continent",
+          "type": "nominal",
+          "title": "Continent: Click continent to filter",
+          "scale": {
+            "domain": [
+              "Asia",
+              "Africa",
+              "Europe",
+              "North America",
+              "Oceania",
+              "South America"
+            ],
+            "range": [
+              "#e41a1c",
+              "#984ea3",
+              "#ff7f00",
+              "#a6cee3",
+              "#377eb8",
+              "#a65628"
+            ]
+          }
+        },
         "tooltip": [
-          {"field": "Reference area", "type": "nominal", "title": "Country"},
-          {"field": "Health spending (% of GDP)", "type": "quantitative", "format": ".1f"},
-          {"field": "Life expectancy (years)", "type": "quantitative", "format": ".1f"}
-        ]
+          {
+            "field": "Country Name",
+            "type": "nominal",
+            "title": "Country"
+          },
+          {
+            "field": "Continent",
+            "type": "nominal"
+          },
+          {
+            "field": "2023 GDP",
+            "type": "quantitative",
+            "title": "Healthcare Spending as % of GDP",
+            "format": ".1f"
+          },
+          {
+            "field": "2023 Life Expectancy",
+            "type": "quantitative",
+            "title": "Life Expectancy (years)",
+            "format": ".1f"
+          }
+        ],
+        "opacity": {
+          "condition": {
+            "param": "continent_highlight",
+            "value": 0.6
+          },
+          "value": 0.2
+        }
+      }
+    },
+    {
+      "description": "Country name labels",
+      "transform": [
+        {
+          "filter": "datum['Country Name'] === 'Japan' || datum['Country Name'] === 'Tuvalu' || datum['Country Name'] === 'United States of America'"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "middle",
+        "dx": 9,
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "color": "#333333"
+      },
+      "encoding": {
+        "text": {
+          "field": "Country Name",
+          "type": "nominal"
+        }
       }
     }
   ]
 }
+
+
