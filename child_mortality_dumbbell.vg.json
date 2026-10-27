@@ -1,0 +1,211 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "background": "transparent",
+  "title": {
+    "text": "Change in Child Mortality Rate, 2015-2024",
+    "subtitle": "Comparing under-five mortality rates per 1,000 live births"
+  },
+  "width": "container",
+  "height": {
+    "step": 22
+  },
+  "data": {
+    "url": "Child_Mortality.csv",
+    "format": {
+      "type": "csv"
+    }
+  },
+  "transform": [
+    {
+      "filter": "indexof(['Afghanistan', 'Australia', 'Bolivia', 'Brazil', 'Burundi', 'Canada', 'Chile', 'China', 'Guyana', 'Haiti', 'India', 'Japan', 'Moldova', 'Monaco', 'Nauru', 'New Zealand', 'Nicaragua', 'Nigeria', 'Seychelles', 'Singapore', 'United Kingdom', 'United States'], datum['Country Name']) >= 0"
+    },
+    {
+      "fold": [
+        "2015",
+        "2024"
+      ],
+      "as": [
+        "Year",
+        "MortalityRate"
+      ]
+    },
+    {
+      "calculate": "toNumber(datum.MortalityRate)",
+      "as": "Rate"
+    },
+    {
+      "filter": "isValid(datum.Rate) && isFinite(datum.Rate)"
+    }
+  ],
+  "encoding": {
+    "y": {
+      "field": "Country Name",
+      "type": "nominal",
+      "sort": {
+        "field": "Rate",
+        "op": "mean",
+        "order": "descending"
+      },
+      "axis": {
+        "title": "Country",
+        "labelLimit": 180
+      }
+    },
+    "x": {
+      "field": "Rate",
+      "type": "quantitative",
+      "title": "Child mortality rate (per 1,000 live births)",
+      "scale": {
+        "zero": true
+      }
+    },
+    "tooltip": [
+      {
+        "field": "Country Name",
+        "type": "nominal",
+        "title": "Country"
+      },
+      {
+        "field": "Year",
+        "type": "nominal",
+        "title": "Year"
+      },
+      {
+        "field": "Rate",
+        "type": "quantitative",
+        "title": "Mortality rate",
+        "format": ".1f"
+      }
+    ]
+  },
+  "layer": [
+    {
+      "transform": [
+        {
+          "pivot": "Year",
+          "value": "Rate",
+          "groupby": [
+            "Country Name"
+          ]
+        },
+        {
+          "filter": "isValid(datum['2015']) && isValid(datum['2024'])"
+        }
+      ],
+      "mark": {
+        "type": "rule",
+        "strokeWidth": 2,
+        "color": "#B8B8B8"
+      },
+      "encoding": {
+        "x": {
+          "field": "2015",
+          "type": "quantitative"
+        },
+        "x2": {
+          "field": "2024"
+        },
+        "y": {
+          "field": "Country Name",
+          "type": "nominal",
+          "sort": {
+            "field": "2024",
+            "order": "descending"
+          }
+        },
+        "tooltip": [
+          {
+            "field": "Country Name",
+            "type": "nominal"
+          },
+          {
+            "field": "2015",
+            "type": "quantitative",
+            "title": "2015 rate"
+          },
+          {
+            "field": "2024",
+            "type": "quantitative",
+            "title": "2024 rate"
+          }
+        ]
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "datum.Year === '2015'"
+        }
+      ],
+      "mark": {
+        "type": "point",
+        "filled": true,
+        "size": 65,
+        "color": "#2E6F40"
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "datum.Year === '2024'"
+        }
+      ],
+      "mark": {
+        "type": "point",
+        "filled": true,
+        "size": 65,
+        "color": "#FF1493"
+      }
+    },
+    {
+      "description": "Nigeria annotation",
+      "transform": [
+        {
+          "pivot": "Year",
+          "value": "Rate",
+          "groupby": [
+            "Country Name"
+          ]
+        },
+        {
+          "filter": "datum['Country Name'] === 'Nigeria'"
+        },
+        {
+          "calculate": "min(datum['2015'], datum['2024'])",
+          "as": "xpos"
+        },
+        {
+          "calculate": "['Child mortality rate in Nigeria remains more', 'than double the other observed countries']",
+          "as": "label"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "baseline": "middle",
+        "dx": -12,
+        "fontSize": 12,
+        "fontWeight": "bold",
+        "color": "#333333"
+      },
+      "encoding": {
+        "x": {
+          "field": "xpos",
+          "type": "quantitative"
+        },
+        "y": {
+          "field": "Country Name",
+          "type": "nominal",
+          "sort": {
+            "field": "2024",
+            "order": "descending"
+          }
+        },
+        "text": {
+          "field": "label"
+        },
+        "tooltip": null
+      }
+    }
+  ]
+}
