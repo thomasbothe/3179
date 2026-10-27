@@ -1,0 +1,65 @@
+
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "background": "transparent",
+  "title": "Age Distribution: Australia vs Global Average",
+  "width": "container",
+  "height": 450,
+  "data": {
+    "url": "death_age.csv"
+  },
+  "transform": [
+    {
+      "fold": ["Australia", "Global"],
+      "as": ["Population", "Value"]
+    },
+    {
+      "calculate": "datum.Population === 'Australia' ? -datum.Value : datum.Value",
+      "as": "Pyramid Value"
+    }
+  ],
+  "mark": {
+    "type": "bar",
+    "tooltip": true
+  },
+  "encoding": {
+    "y": {
+      "field": "Age Group",
+      "type": "ordinal",
+      "sort": [
+        "100+", "95-99", "90-94", "85-89",
+        "80-84", "75-79", "70-74", "65-69",
+        "60-64", "55-59", "50-54", "45-49",
+        "40-44", "35-39", "30-34", "25-29",
+        "20-24", "15-19", "10-14", "5-9", "0-4"
+    ],
+      "title": "Age Group",
+      "axis": {"labelLimit": 70}
+    },
+    "x": {
+      "field": "Pyramid Value",
+      "type": "quantitative",
+      "title": "Population (%)",
+      "scale": {"domain": [-20, 20]},
+      "axis": {
+        "labelExpr": "abs(datum.value)",
+        "tickCount": 5,
+        "grid": true
+      }
+    },
+    "color": {
+      "field": "Population",
+      "type": "nominal",
+      "scale": {
+        "domain": ["Australia", "Global"],
+        "range": ["#377eb8", "#e41a1c"]
+      },
+      "legend": {"title": null}
+    },
+    "tooltip": [
+      {"field": "Age Group", "type": "ordinal"},
+      {"field": "Population", "type": "nominal"},
+      {"field": "Value", "type": "quantitative", "title": "Population (%)", "format": ".3f"}
+    ]
+  }
+}
