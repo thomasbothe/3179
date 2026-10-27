@@ -1,0 +1,504 @@
+{
+  "$schema": "https://vega.github.io/schema/vega/v5.json",
+  "description": "Treemap showing causes of death by category.",
+  "width": 550,
+  "height": 460,
+  "padding": {
+    "top": 40,
+    "bottom": 40,
+    "left": 5,
+    "right": 5
+  },
+  "autosize": "none",
+  "signals": [
+    {
+      "name": "region",
+      "value": "World",
+      "bind": {
+        "input": "select",
+        "options": [
+          "World",
+          "Australia",
+          "Africa",
+          "Europe",
+          "South-East Asia"
+        ],
+        "name": "region "
+      }
+    },
+    {
+      "name": "layout",
+      "value": "squarify",
+      "bind": {
+        "input": "select",
+        "options": [
+          "squarify",
+          "binary"
+        ]
+      }
+    }
+  ],
+  "data": [
+    {
+      "name": "tree",
+      "url": "cause_of_death.csv",
+      "format": {
+        "type": "csv"
+      },
+      "transform": [
+        {
+          "type": "filter",
+          "expr": "datum.id != null && datum.id !== ''"
+        },
+        {
+          "type": "filter",
+          "expr": "datum.Region === region"
+        },
+        {
+          "type": "formula",
+          "as": "value",
+          "expr": "toNumber(datum.value)"
+        },
+        {
+          "type": "formula",
+          "as": "parent",
+          "expr": "datum.id === 'root' ? null : datum.parent"
+        },
+        {
+          "type": "stratify",
+          "key": "id",
+          "parentKey": "parent"
+        },
+        {
+          "type": "treemap",
+          "field": "value",
+          "sort": {
+            "field": "value",
+            "order": "descending"
+          },
+          "round": true,
+          "method": {
+            "signal": "layout"
+          },
+          "ratio": {
+            "signal": 1.6
+          },
+          "size": [
+            {
+              "signal": "width"
+            },
+            {
+              "signal": "height"
+            }
+          ],
+          "paddingInner": 3
+        }
+      ]
+    },
+    {
+      "name": "leaves",
+      "source": "tree",
+      "transform": [
+        {
+          "type": "filter",
+          "expr": "datum.depth === 2"
+        },
+        {
+          "type": "formula",
+          "as": "cap",
+          "expr": "max(1, floor((datum.x1 - datum.x0 - 14) / 6.3))"
+        },
+        {
+          "type": "formula",
+          "as": "b1",
+          "expr": "length(datum.label) <= datum.cap ? -1 : (lastindexof(substring(datum.label, 0, datum.cap + 1), ' ') > 0 ? lastindexof(substring(datum.label, 0, datum.cap + 1), ' ') : indexof(datum.label, ' '))"
+        },
+        {
+          "type": "formula",
+          "as": "l1",
+          "expr": "datum.b1 < 0 ? datum.label : substring(datum.label, 0, datum.b1)"
+        },
+        {
+          "type": "formula",
+          "as": "r1",
+          "expr": "datum.b1 < 0 ? '' : substring(datum.label, datum.b1 + 1)"
+        },
+        {
+          "type": "formula",
+          "as": "b2",
+          "expr": "length(datum.r1) <= datum.cap ? -1 : (lastindexof(substring(datum.r1, 0, datum.cap + 1), ' ') > 0 ? lastindexof(substring(datum.r1, 0, datum.cap + 1), ' ') : indexof(datum.r1, ' '))"
+        },
+        {
+          "type": "formula",
+          "as": "l2",
+          "expr": "datum.r1 === '' ? '' : (datum.b2 < 0 ? datum.r1 : substring(datum.r1, 0, datum.b2))"
+        },
+        {
+          "type": "formula",
+          "as": "l3",
+          "expr": "datum.b2 < 0 ? '' : substring(datum.r1, datum.b2 + 1)"
+        },
+        {
+          "type": "formula",
+          "as": "nLines",
+          "expr": "datum.l3 !== '' ? 3 : (datum.l2 !== '' ? 2 : 1)"
+        },
+        {
+          "type": "formula",
+          "as": "fitsW",
+          "expr": "max(length(datum.l1), length(datum.l2), length(datum.l3)) <= datum.cap"
+        },
+        {
+          "type": "formula",
+          "as": "lines",
+          "expr": "datum.l3 !== '' ? [datum.l1, datum.l2, datum.l3] : (datum.l2 !== '' ? [datum.l1, datum.l2] : [datum.l1])"
+        }
+      ]
+    },
+    {
+      "name": "totals",
+      "source": "leaves",
+      "transform": [
+        {
+          "type": "aggregate",
+          "groupby": [
+            "parent"
+          ],
+          "fields": [
+            "value"
+          ],
+          "ops": [
+            "sum"
+          ],
+          "as": [
+            "total"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "categories",
+      "source": "tree",
+      "transform": [
+        {
+          "type": "filter",
+          "expr": "datum.depth === 1"
+        },
+        {
+          "type": "lookup",
+          "from": "totals",
+          "key": "parent",
+          "fields": [
+            "id"
+          ],
+          "values": [
+            "total"
+          ],
+          "as": [
+            "total"
+          ]
+        },
+        {
+          "type": "formula",
+          "as": "gtext",
+          "expr": "(datum.total < 1 ? '<1' : format(datum.total, '.0f')) + '% died from ' + ({'Non-communicable': 'non-communicable diseases', 'Infectious': 'infectious diseases', 'Other': 'injuries', 'Maternal/neonatal/nutritional': 'maternal, neonatal and nutritional diseases'})[datum.label]"
+        },
+        {
+          "type": "formula",
+          "as": "gw",
+          "expr": "length(datum.gtext) * 8"
+        },
+        {
+          "type": "formula",
+          "as": "isLeft",
+          "expr": "(datum.x0 + datum.x1) / 2 < width / 2"
+        },
+        {
+          "type": "formula",
+          "as": "isTop",
+          "expr": "datum.y0 <= 2"
+        }
+      ]
+    },
+    {
+      "name": "topExtents",
+      "source": "categories",
+      "transform": [
+        {
+          "type": "filter",
+          "expr": "datum.isTop"
+        },
+        {
+          "type": "formula",
+          "as": "leftEnd",
+          "expr": "datum.isLeft ? datum.x0 + datum.gw : null"
+        },
+        {
+          "type": "formula",
+          "as": "rightStart",
+          "expr": "datum.isLeft ? null : datum.x1 - datum.gw"
+        },
+        {
+          "type": "aggregate",
+          "fields": [
+            "leftEnd",
+            "rightStart"
+          ],
+          "ops": [
+            "max",
+            "min"
+          ],
+          "as": [
+            "leftEnd",
+            "rightStart"
+          ]
+        },
+        {
+          "type": "formula",
+          "as": "overlap",
+          "expr": "isValid(datum.leftEnd) && isValid(datum.rightStart) && datum.rightStart - datum.leftEnd < 12"
+        }
+      ]
+    }
+  ],
+  "scales": [
+    {
+      "name": "color",
+      "type": "ordinal",
+      "domain": [
+        "Non-communicable",
+        "Infectious",
+        "Other",
+        "Maternal/neonatal/nutritional"
+      ],
+      "range": [
+        "#1b6672",
+        "#97284d",
+        "#479b78",
+        "#a94092"
+      ]
+    }
+  ],
+  "marks": [
+    {
+      "type": "rect",
+      "name": "category-backgrounds",
+      "from": {
+        "data": "categories"
+      },
+      "interactive": false,
+      "encode": {
+        "enter": {
+          "fill": {
+            "scale": "color",
+            "field": "label"
+          },
+          "fillOpacity": {
+            "value": 0.16
+          },
+          "stroke": {
+            "value": "#ffffff"
+          },
+          "strokeWidth": {
+            "value": 3
+          }
+        },
+        "update": {
+          "x": {
+            "field": "x0"
+          },
+          "y": {
+            "field": "y0"
+          },
+          "x2": {
+            "field": "x1"
+          },
+          "y2": {
+            "field": "y1"
+          }
+        }
+      }
+    },
+    {
+      "type": "rect",
+      "name": "cause-tiles",
+      "from": {
+        "data": "leaves"
+      },
+      "encode": {
+        "enter": {
+          "stroke": {
+            "value": "#ffffff"
+          },
+          "strokeWidth": {
+            "value": 1
+          }
+        },
+        "update": {
+          "x": {
+            "field": "x0"
+          },
+          "y": {
+            "field": "y0"
+          },
+          "x2": {
+            "field": "x1"
+          },
+          "y2": {
+            "field": "y1"
+          },
+          "fill": {
+            "scale": "color",
+            "field": "Type"
+          },
+          "tooltip": {
+            "signal": "{'Cause': datum.label, 'Category': datum.Type, 'Percentage': format(datum.value, '.2f') + '%'}"
+          }
+        },
+        "hover": {
+          "stroke": {
+            "value": "#222222"
+          },
+          "strokeWidth": {
+            "value": 3
+          }
+        }
+      }
+    },
+    {
+      "type": "text",
+      "name": "cause-labels",
+      "from": {
+        "data": "leaves"
+      },
+      "interactive": false,
+      "encode": {
+        "enter": {
+          "font": {
+            "value": "Arial"
+          },
+          "fontSize": {
+            "value": 12
+          },
+          "align": {
+            "value": "left"
+          },
+          "baseline": {
+            "value": "top"
+          },
+          "fill": {
+            "value": "#ffffff"
+          },
+          "text": {
+            "field": "lines"
+          },
+          "lineHeight": {
+            "value": 14
+          }
+        },
+        "update": {
+          "x": {
+            "signal": "datum.x0 + 7"
+          },
+          "y": {
+            "signal": "datum.y0 + 7"
+          },
+          "opacity": {
+            "signal": "datum.fitsW && datum.y1 - datum.y0 >= 7 + datum.nLines * 14 + 3 ? 1 : 0"
+          }
+        }
+      }
+    },
+    {
+      "type": "text",
+      "name": "percentage-labels",
+      "from": {
+        "data": "leaves"
+      },
+      "interactive": false,
+      "encode": {
+        "enter": {
+          "font": {
+            "value": "Arial"
+          },
+          "fontSize": {
+            "value": 11
+          },
+          "align": {
+            "value": "left"
+          },
+          "baseline": {
+            "value": "top"
+          },
+          "fill": {
+            "value": "#ffffff"
+          },
+          "text": {
+            "signal": "format(datum.value, '.2f') + '%'"
+          }
+        },
+        "update": {
+          "x": {
+            "signal": "datum.x0 + 7"
+          },
+          "y": {
+            "signal": "datum.y0 + 7 + datum.nLines * 14 + 2"
+          },
+          "opacity": {
+            "signal": "datum.fitsW && datum.x1 - datum.x0 > 48 && datum.y1 - datum.y0 > 7 + datum.nLines * 14 + 2 + 11 + 2 ? 1 : 0"
+          }
+        }
+      }
+    },
+    {
+      "type": "text",
+      "name": "group-labels",
+      "from": {
+        "data": "categories"
+      },
+      "interactive": false,
+      "encode": {
+        "enter": {
+          "font": {
+            "value": "Arial"
+          },
+          "fontSize": {
+            "value": 14
+          },
+          "fontWeight": {
+            "value": "bold"
+          },
+          "fill": {
+            "scale": "color",
+            "field": "label"
+          }
+        },
+        "update": {
+          "text": {
+            "field": "gtext"
+          },
+          "align": {
+            "signal": "datum.isLeft ? 'left' : 'right'"
+          },
+          "x": {
+            "signal": "datum.isLeft ? datum.x0 : datum.x1"
+          },
+          "baseline": {
+            "signal": "datum.y0 <= 2 ? 'bottom' : 'top'"
+          },
+          "y": {
+            "signal": "datum.y0 <= 2 ? datum.y0 - 8 : datum.y1 + 8"
+          },
+          "opacity": {
+            "signal": "datum.isTop ? (datum.isLeft || !data('topExtents')[0].overlap ? 1 : 0) : (datum.y1 >= height - 2 ? 1 : 0)"
+          }
+        }
+      }
+    }
+  ],
+  "config": {
+    "view": {
+      "stroke": null
+    }
+  }
+}

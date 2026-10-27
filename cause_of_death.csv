@@ -1,0 +1,135 @@
+id,parent,label,value,Type,Region
+root,,All causes,0,Overall,World
+noncomm,root,Non-communicable,0,Non-communicable,World
+infectious,root,Infectious,0,Infectious,World
+other,root,Other,0,Other,World
+maternal,root,Maternal/neonatal/nutritional,0,Maternal/neonatal/nutritional,World
+heart,noncomm,Heart diseases,32,Non-communicable,World
+cancers,noncomm,Cancers,18,Non-communicable,World
+chronic_respiratory,noncomm,Chronic respiratory diseases,6.9,Non-communicable,World
+diabetes_kidney,noncomm,Diabetes & kidney diseases,5.9,Non-communicable,World
+neurological,noncomm,Neurological diseases,5,Non-communicable,World
+digestive,noncomm,Digestive diseases,4,Non-communicable,World
+other_noncomm,noncomm,Other non-communicable diseases,3.3,Non-communicable,World
+respiratory_infections,infectious,Respiratory infections,5.6,Infectious,World
+other_infectious,infectious,Other infectious diseases,2,Infectious,World
+diarrheal,infectious,Diarrheal diseases,1.8,Infectious,World
+tuberculosis,infectious,Tuberculosis,1.7,Infectious,World
+hiv,infectious,HIV/AIDS,1.4,Infectious,World
+malaria,infectious,Malaria,1.1,Infectious,World
+transport,other,Transport injuries,2.4,Other,World
+other_injuries,other,Other injuries,2,Other,World
+falls,other,Falls,1.4,Other,World
+suicide,other,Suicide,1.3,Other,World
+homicide,other,Homicide,0.73,Other,World
+conflict,other,Conflict & terrorism,0.26,Other,World
+neonatal,maternal,Neonatal deaths,2.7,Maternal/neonatal/nutritional,World
+nutrition,maternal,Nutritional deficiency,0.48,Maternal/neonatal/nutritional,World
+maternal_disorder,maternal,Maternal disorders,0.4,Maternal/neonatal/nutritional,World
+
+root,,All causes,0,Overall,Australia
+noncomm,root,Non-communicable,0,Non-communicable,Australia
+infectious,root,Infectious,0,Infectious,Australia
+other,root,Other,0,Other,Australia
+maternal,root,Maternal/neonatal/nutritional,0,Maternal/neonatal/nutritional,Australia
+heart,noncomm,Heart diseases,26,Non-communicable,Australia
+cancers,noncomm,Cancers,32,Non-communicable,Australia
+chronic_respiratory,noncomm,Chronic respiratory diseases,6.8,Non-communicable,Australia
+diabetes_kidney,noncomm,Diabetes & kidney diseases,6.0,Non-communicable,Australia
+neurological,noncomm,Neurological diseases,11,Non-communicable,Australia
+digestive,noncomm,Digestive diseases,4.4,Non-communicable,Australia
+other_noncomm,noncomm,Other non-communicable diseases,4.8,Non-communicable,Australia
+respiratory_infections,infectious,Respiratory infections,2.3,Infectious,Australia
+other_infectious,infectious,Other infectious diseases,0.31,Infectious,Australia
+diarrheal,infectious,Diarrheal diseases,0.16,Infectious,Australia
+tuberculosis,infectious,Tuberculosis,0.04,Infectious,Australia
+hiv,infectious,HIV/AIDS,0.03,Infectious,Australia
+transport,other,Transport injuries,0.87,Other,Australia
+other_injuries,other,Other injuries,0.59,Other,Australia
+falls,other,Falls,3.1,Other,Australia
+suicide,other,Suicide,1.8,Other,Australia
+homicide,other,Homicide,0.14,Other,Australia
+neonatal,maternal,Neonatal deaths,0.26,Maternal/neonatal/nutritional,Australia
+nutrition,maternal,Nutritional deficiency,0.10,Maternal/neonatal/nutritional,Australia
+
+root,,All causes,0,Overall,Africa
+noncomm,root,Non-communicable,0,Non-communicable,Africa
+infectious,root,Infectious,0,Infectious,Africa
+other,root,Other,0,Other,Africa
+maternal,root,Maternal/neonatal/nutritional,0,Maternal/neonatal/nutritional,Africa
+heart,noncomm,Heart diseases,14,Non-communicable,Africa
+cancers,noncomm,Cancers,8.6,Non-communicable,Africa
+chronic_respiratory,noncomm,Chronic respiratory diseases,2.1,Non-communicable,Africa
+diabetes_kidney,noncomm,Diabetes & kidney diseases,4.6,Non-communicable,Africa
+neurological,noncomm,Neurological diseases,2.0,Non-communicable,Africa
+digestive,noncomm,Digestive diseases,3.5,Non-communicable,Africa
+other_noncomm,noncomm,Other non-communicable diseases,4.4,Non-communicable,Africa
+respiratory_infections,infectious,Respiratory infections,8.5,Infectious,Africa
+other_infectious,infectious,Other infectious diseases,7.2,Infectious,Africa
+diarrheal,infectious,Diarrheal diseases,4.5,Infectious,Africa
+tuberculosis,infectious,Tuberculosis,3.7,Infectious,Africa
+hiv,infectious,HIV/AIDS,6.8,Infectious,Africa
+malaria,infectious,Malaria,7.0,Infectious,Africa
+transport,other,Transport injuries,4.7,Other,Africa
+other_injuries,other,Other injuries,3.1,Other,Africa
+falls,other,Falls,0.82,Other,Africa
+suicide,other,Suicide,1.0,Other,Africa
+homicide,other,Homicide,1.4,Other,Africa
+conflict,other,Conflict & terrorism,0.27,Other,Africa
+neonatal,maternal,Neonatal deaths,8.6,Maternal/neonatal/nutritional,Africa
+nutrition,maternal,Nutritional deficiency,1.1,Maternal/neonatal/nutritional,Africa
+maternal_disorder,maternal,Maternal disorders,1.7,Maternal/neonatal/nutritional,Africa
+
+root,,All causes,0,Overall,Europe
+noncomm,root,Non-communicable,0,Non-communicable,Europe
+infectious,root,Infectious,0,Infectious,Europe
+other,root,Other,0,Other,Europe
+maternal,root,Maternal/neonatal/nutritional,0,Maternal/neonatal/nutritional,Europe
+heart,noncomm,Heart diseases,39,Non-communicable,Europe
+cancers,noncomm,Cancers,24,Non-communicable,Europe
+chronic_respiratory,noncomm,Chronic respiratory diseases,4.1,Non-communicable,Europe
+diabetes_kidney,noncomm,Diabetes & kidney diseases,4.7,Non-communicable,Europe
+neurological,noncomm,Neurological diseases,7.4,Non-communicable,Europe
+digestive,noncomm,Digestive diseases,5,Non-communicable,Europe
+other_noncomm,noncomm,Other non-communicable diseases,3.2,Non-communicable,Europe
+respiratory_infections,infectious,Respiratory infections,4.2,Infectious,Europe
+other_infectious,infectious,Other infectious diseases,0.23,Infectious,Europe
+diarrheal,infectious,Diarrheal diseases,0.19,Infectious,Europe
+tuberculosis,infectious,Tuberculosis,0.17,Infectious,Europe
+hiv,infectious,HIV/AIDS,0.28,Infectious,Europe
+transport,other,Transport injuries,0.73,Other,Europe
+other_injuries,other,Other injuries,2.2,Other,Europe
+falls,other,Falls,1.6,Other,Europe
+suicide,other,Suicide,1.3,Other,Europe
+homicide,other,Homicide,0.30,Other,Europe
+conflict,other,Conflict & terrorism,0.76,Other,Europe
+neonatal,maternal,Neonatal deaths,0.37,Maternal/neonatal/nutritional,Europe
+nutrition,maternal,Nutritional deficiency,0.14,Maternal/neonatal/nutritional,Europe
+
+root,,All causes,0,Overall,South-East Asia
+noncomm,root,Non-communicable,0,Non-communicable,South-East Asia
+infectious,root,Infectious,0,Infectious,South-East Asia
+other,root,Other,0,Other,South-East Asia
+maternal,root,Maternal/neonatal/nutritional,0,Maternal/neonatal/nutritional,South-East Asia
+heart,noncomm,Heart diseases,32,Non-communicable,South-East Asia
+cancers,noncomm,Cancers,12,Non-communicable,South-East Asia
+chronic_respiratory,noncomm,Chronic respiratory diseases,12,Non-communicable,South-East Asia
+diabetes_kidney,noncomm,Diabetes & kidney diseases,7.1,Non-communicable,South-East Asia
+neurological,noncomm,Neurological diseases,2.6,Non-communicable,South-East Asia
+digestive,noncomm,Digestive diseases,3.7,Non-communicable,South-East Asia
+other_noncomm,noncomm,Other non-communicable diseases,2.8,Non-communicable,South-East Asia
+respiratory_infections,infectious,Respiratory infections,4.7,Infectious,South-East Asia
+other_infectious,infectious,Other infectious diseases,2.2,Infectious,South-East Asia
+diarrheal,infectious,Diarrheal diseases,3.9,Infectious,South-East Asia
+tuberculosis,infectious,Tuberculosis,3.1,Infectious,South-East Asia
+hiv,infectious,HIV/AIDS,0.55,Infectious,South-East Asia
+malaria,infectious,Malaria,0.14,Infectious,South-East Asia
+transport,other,Transport injuries,2.6,Other,South-East Asia
+other_injuries,other,Other injuries,2.2,Other,South-East Asia
+falls,other,Falls,2.0,Other,South-East Asia
+suicide,other,Suicide,1.8,Other,South-East Asia
+homicide,other,Homicide,0.43,Other,South-East Asia
+conflict,other,Conflict & terrorism,0.09,Other,South-East Asia
+neonatal,maternal,Neonatal deaths,3.0,Maternal/neonatal/nutritional,South-East Asia
+nutrition,maternal,Nutritional deficiency,0.51,Maternal/neonatal/nutritional,South-East Asia
+maternal_disorder,maternal,Maternal disorders,0.28,Maternal/neonatal/nutritional,South-East Asia
