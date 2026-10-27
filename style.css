@@ -2,7 +2,7 @@ body {
     margin: 0;
     background-color: white;
     color: #263238;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Roboto, Helvetica, sans-serif;
     line-height: 1.6;
 }
 
@@ -93,7 +93,6 @@ html { scroll-behavior: smooth; }
 }
 
 /* headline numbers */
-.stat-row { margin: 10px 0 40px; padding: 0 15px; }
 .stat {
     box-sizing: border-box;
     padding: 10px 20px 10px 14px;
@@ -114,7 +113,7 @@ html { scroll-behavior: smooth; }
 .part-intro {
     margin-top: 50px;
     padding: 0 15px;
-    max-width: 760px;
+    max-width: none;
 }
 .part-label {
     margin: 0 0 4px;
@@ -130,7 +129,8 @@ html { scroll-behavior: smooth; }
     line-height: 1.2;
 }
 .part-intro p { 
-    color: #52616b; 
+    color: #52616b;
+    max-width: 760px; 
 }
 
 .chart-section h3 {
@@ -189,6 +189,17 @@ html { scroll-behavior: smooth; }
 }
 .sources dd { 
     margin: 0; 
+}
+
+.header-stats {
+    box-sizing: border-box;
+    padding-left: 40px;
+}
+.header-stats .stat {
+    margin-bottom: 20px;
+}
+.header-stats .stat:last-child {
+    margin-bottom: 0;
 }
 
 /* keep wide Vega charts inside their column */
