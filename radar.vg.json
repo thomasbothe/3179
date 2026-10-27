@@ -1,0 +1,413 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "background": "white",
+  "title": {
+    "text": "Australia vs World: Quality of Life Indicators",
+    "anchor": "start",
+    "offset": 4
+  },
+  "width": 700,
+  "height": 551,
+  "data": {
+    "url": "radar.csv",
+    "format": {
+      "type": "csv"
+    }
+  },
+  "transform": [
+    {
+      "calculate": "toNumber(datum.Score)",
+      "as": "score"
+    },
+    {
+      "calculate": "indexof(['Life expectancy', 'GDP Per Capita', 'Clean Water', 'Vaccination', 'Child mortality'], datum.Indicator)",
+      "as": "idx"
+    },
+    {
+      "filter": "datum.idx >= 0"
+    },
+    {
+      "calculate": "datum.idx * 2 * PI / 5 - PI / 2",
+      "as": "angle"
+    },
+    {
+      "calculate": "datum.score * cos(datum.angle)",
+      "as": "x"
+    },
+    {
+      "calculate": "datum.score * sin(datum.angle)",
+      "as": "y"
+    },
+    {
+      "calculate": "datum.idx + 1",
+      "as": "ord"
+    }
+  ],
+  "layer": [
+    {
+      "description": "Spokes",
+      "data": {
+        "sequence": {
+          "start": 0,
+          "stop": 5,
+          "as": "i"
+        }
+      },
+      "transform": [
+        {
+          "calculate": "0",
+          "as": "x0"
+        },
+        {
+          "calculate": "0",
+          "as": "y0"
+        },
+        {
+          "calculate": "2 * PI * datum.i / 5 - PI / 2",
+          "as": "angle"
+        },
+        {
+          "calculate": "100 * cos(datum.angle)",
+          "as": "x"
+        },
+        {
+          "calculate": "100 * sin(datum.angle)",
+          "as": "y"
+        }
+      ],
+      "mark": {
+        "type": "rule",
+        "stroke": "#D9DDE3"
+      },
+      "encoding": {
+        "x": {
+          "field": "x0",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              -150,
+              150
+            ]
+          },
+          "axis": null
+        },
+        "y": {
+          "field": "y0",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              -128,
+              108
+            ],
+            "reverse": true
+          },
+          "axis": null
+        },
+        "x2": {
+          "field": "x"
+        },
+        "y2": {
+          "field": "y"
+        }
+      }
+    },
+    {
+      "description": "Grid rings",
+      "data": {
+        "sequence": {
+          "start": 0,
+          "stop": 5,
+          "as": "i"
+        }
+      },
+      "transform": [
+        {
+          "calculate": "2 * PI * datum.i / 5 - PI / 2",
+          "as": "angle"
+        },
+        {
+          "calculate": "datum.i + 1",
+          "as": "ord"
+        },
+        {
+          "calculate": "20 * cos(datum.angle)",
+          "as": "x20"
+        },
+        {
+          "calculate": "20 * sin(datum.angle)",
+          "as": "y20"
+        },
+        {
+          "calculate": "40 * cos(datum.angle)",
+          "as": "x40"
+        },
+        {
+          "calculate": "40 * sin(datum.angle)",
+          "as": "y40"
+        },
+        {
+          "calculate": "60 * cos(datum.angle)",
+          "as": "x60"
+        },
+        {
+          "calculate": "60 * sin(datum.angle)",
+          "as": "y60"
+        },
+        {
+          "calculate": "80 * cos(datum.angle)",
+          "as": "x80"
+        },
+        {
+          "calculate": "80 * sin(datum.angle)",
+          "as": "y80"
+        },
+        {
+          "calculate": "100 * cos(datum.angle)",
+          "as": "x100"
+        },
+        {
+          "calculate": "100 * sin(datum.angle)",
+          "as": "y100"
+        },
+        {
+          "fold": [
+            "x20",
+            "x40",
+            "x60",
+            "x80",
+            "x100"
+          ],
+          "as": [
+            "ring",
+            "x"
+          ]
+        },
+        {
+          "calculate": "datum.ring === 'x20' ? datum.y20 : datum.ring === 'x40' ? datum.y40 : datum.ring === 'x60' ? datum.y60 : datum.ring === 'x80' ? datum.y80 : datum.y100",
+          "as": "y"
+        }
+      ],
+      "mark": {
+        "type": "line",
+        "interpolate": "linear-closed",
+        "stroke": "#D9DDE3",
+        "strokeWidth": 1
+      },
+      "encoding": {
+        "x": {
+          "field": "x",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              -150,
+              150
+            ]
+          },
+          "axis": null
+        },
+        "y": {
+          "field": "y",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              -128,
+              108
+            ],
+            "reverse": true
+          },
+          "axis": null
+        },
+        "detail": {
+          "field": "ring"
+        },
+        "order": {
+          "field": "ord",
+          "type": "quantitative"
+        }
+      }
+    },
+    {
+      "description": "Data polygons",
+      "mark": {
+        "type": "line",
+        "interpolate": "linear-closed",
+        "point": {
+          "filled": true,
+          "size": 70
+        },
+        "strokeWidth": 2.5,
+        "fillOpacity": 0.2
+      },
+      "encoding": {
+        "x": {
+          "field": "x",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              -150,
+              150
+            ]
+          },
+          "axis": null
+        },
+        "y": {
+          "field": "y",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              -128,
+              108
+            ],
+            "reverse": true
+          },
+          "axis": null
+        },
+        "detail": {
+          "field": "Group"
+        },
+        "order": {
+          "field": "ord",
+          "type": "quantitative"
+        },
+        "tooltip": [
+          {
+            "field": "Group",
+            "type": "nominal"
+          },
+          {
+            "field": "Indicator",
+            "type": "nominal"
+          },
+          {
+            "field": "Value",
+            "type": "quantitative"
+          },
+          {
+            "field": "score",
+            "type": "quantitative",
+            "title": "Score / 100"
+          }
+        ],
+        "stroke": {
+          "field": "Group",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "Australia",
+              "World"
+            ],
+            "range": [
+              "#377eb8",
+              "#e41a1c"
+            ]
+          },
+          "legend": {
+            "title": null,
+            "orient": "top",
+            "offset": 4
+          }
+        },
+        "fill": {
+          "field": "Group",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "Australia",
+              "World"
+            ],
+            "range": [
+              "#377eb8",
+              "#e41a1c"
+            ]
+          },
+          "legend": {
+            "title": null,
+            "orient": "top",
+            "offset": 4
+          }
+        }
+      }
+    },
+    {
+      "description": "Axis labels",
+      "data": {
+        "values": [
+          {
+            "label": "Life expectancy",
+            "i": 0
+          },
+          {
+            "label": "GDP Per Capita",
+            "i": 1
+          },
+          {
+            "label": "Clean Water",
+            "i": 2
+          },
+          {
+            "label": "Vaccination",
+            "i": 3
+          },
+          {
+            "label": "Child mortality",
+            "i": 4
+          }
+        ]
+      },
+      "transform": [
+        {
+          "calculate": "2 * PI * datum.i / 5 - PI / 2",
+          "as": "angle"
+        },
+        {
+          "calculate": "118 * cos(datum.angle)",
+          "as": "x"
+        },
+        {
+          "calculate": "118 * sin(datum.angle)",
+          "as": "y"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "fontSize": 12
+      },
+      "encoding": {
+        "x": {
+          "field": "x",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              -150,
+              150
+            ]
+          },
+          "axis": null
+        },
+        "y": {
+          "field": "y",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              -128,
+              108
+            ],
+            "reverse": true
+          },
+          "axis": null
+        },
+        "text": {
+          "field": "label"
+        },
+        "color": {
+          "value": "#333333"
+        }
+      }
+    }
+  ],
+  "config": {
+    "view": {
+      "stroke": null
+    }
+  }
+}
