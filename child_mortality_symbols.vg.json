@@ -7,8 +7,41 @@
   "title": "Child Deaths Before Age 5 (2024)",
   "width": 520,
   "height": 330,
-  "projection": {
-    "type": "equalEarth"
+  "params": [
+    {
+        "name": "zoom_level",
+        "value": 100,
+        "bind": {
+            "input": "range",
+            "min": 100,
+            "max": 400,
+            "step": 50,
+            "name": "Zoom: "
+        }
+    },
+    {
+        "name": "centre_to",
+        "value": [0, 0],
+        "bind": {
+            "input": "select",
+            "options": [
+                [0, 0],
+                [100, 30],
+                [20, 0],
+                [15, 52],
+                [-100, 40],
+                [-60, -15],
+                [175, -15]
+            ],
+            "labels": ["World", "Asia", "Africa", "Europe", "North America", "South America", "Oceania"],
+            "name": "Map Centre: "
+        }
+    }
+  ],
+   "projection": {
+    "type": "equalEarth",
+    "center": {"expr": "centre_to"},
+    "scale": {"expr": "zoom_level"}
   },
   "layer": [
     {
@@ -49,6 +82,7 @@
       ],
       "mark": {
         "type": "circle",
+        "fill": "#e41a1c",
         "opacity": 0.7,
         "stroke": "white",
         "strokeWidth": 0.5
@@ -78,28 +112,7 @@
             ],
             "range": [
               10,
-              600
-            ]
-          }
-        },
-        "color": {
-          "field": "2024",
-          "type": "quantitative",
-          "title": "Deaths per 1,000 births",
-          "scale": {
-            "type": "threshold",
-            "domain": [
-              5,
-              20,
-              50,
-              80
-            ],
-            "range": [
-              "#fee5d9",
-              "#fcae91",
-              "#fb6a4a",
-              "#de2d26",
-              "#a50f15"
+              200
             ]
           }
         },
@@ -110,14 +123,9 @@
             "title": "Country"
           },
           {
-            "field": "2015",
-            "type": "quantitative",
-            "title": "2015"
-          },
-          {
             "field": "2024",
             "type": "quantitative",
-            "title": "2024"
+            "title": "Deaths per 1,000 births"
           }
         ]
       }
