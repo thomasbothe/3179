@@ -1,0 +1,99 @@
+
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "background": "transparent",
+  "title": {
+    "text": "Vaccination Coverage by Country and Vaccine",
+    "subtitle": "Coverage percentage across five vaccine types"
+  },
+  "width": "container",
+  "height": 500,
+  "data": {
+    "url": "Vaccinated.csv"
+  },
+  "transform": [
+    {
+      "fold": [
+        "DPT",
+        "Polio",
+        "Influenza",
+        "Covid",
+        "Hepatitis B",
+        "Rubella"
+      ],
+      "as": ["Vaccine", "Coverage"]
+    },
+    {
+      "calculate": "toNumber(datum.Coverage)",
+      "as": "Coverage"
+    }
+  ],
+  "mark": {
+    "type": "rect",
+    "stroke": "white",
+    "strokeWidth": 1
+  },
+  "encoding": {
+    "x": {
+      "field": "Vaccine",
+      "type": "nominal",
+      "title": "Vaccine",
+      "sort": [
+        "DPT",
+        "Polio",
+        "Influenza",
+        "Covid",
+        "Hepatitis B",
+        "Rubella"
+      ],
+      "axis": {
+        "labelAngle": 0
+      }
+    },
+    "y": {
+      "field": "Country",
+      "type": "nominal",
+      "title": "Country",
+      "sort": {
+        "field": "Coverage",
+        "op": "mean",
+        "order": "descending"
+      }
+    },
+    "color": {
+      "field": "Coverage",
+      "type": "quantitative",
+      "title": "Coverage (%)",
+      "scale": {
+        "domain": [40, 100],
+        "scheme": "blues"
+      }
+    },
+    "tooltip": [
+      {
+        "field": "Country",
+        "type": "nominal",
+        "title": "Country"
+      },
+      {
+        "field": "Vaccine",
+        "type": "nominal",
+        "title": "Vaccine"
+      },
+      {
+        "field": "Coverage",
+        "type": "quantitative",
+        "title": "Coverage (%)",
+        "format": ".0f"
+      }
+    ]
+  },
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "grid": false
+    }
+  }
+}
